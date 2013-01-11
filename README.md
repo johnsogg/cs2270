@@ -14,9 +14,9 @@ People
 
 *TAs:*
 
-Yogesh Virkar - Yogesh.Virkar@colorado.edu
-Xin Pan - xin.pan@colorado.edu
-Shang Ma - Shang.Ma@colorado.edu
+* Yogesh Virkar - Yogesh.Virkar@colorado.edu
+* Xin Pan - xin.pan@colorado.edu
+* Shang Ma - Shang.Ma@colorado.edu
 
 *LAs:*
 
@@ -44,7 +44,7 @@ There are two components to your final grade: Homeworks and
 tests. Each component is worth 1/2 of your grade. Homeworks are due on
 Fridays. Test dates and homework due dates are given on the calendar.
 
-Homeworks
+Homeworks (165 points possible)
 --------
 
 There are _eleven_ homework assignments. Each is worth 15 points, for
@@ -83,7 +83,7 @@ Homework assignment descriptions and file downloads will appear in the
 course GitHub repository over time. I will try to make them available
 far in advance so you can work ahead if you like.
 
-Tests
+Tests (165 points possible)
 -----
 
 There are three tests. Two will happen during normal lecture periods,
@@ -98,7 +98,7 @@ Tests have the following point values:
 
 * Test 1: 40 points
 * Test 2: 50 points
-* Teset 3 (final): 75 points
+* Final: 75 points
 
 Specific information about tests will appear in the course GitHub
 repository about a week before they happen.
@@ -106,12 +106,13 @@ repository about a week before they happen.
 Reading Material
 ==========
 
-There is no required book for this course. Textbooks are absurdly
-expensive, and there are a number of high-quality introductory texts
-available online. Learning to program is best done by writing lots and
-lots of code. So: I will suggest readings from these books throughout
-the course, but _none of it will sink in unless you write code to
-convince yourself that you know what you are doing._
+There is no required book for this course. There are a number of
+high-quality introductory texts available online. Learning to program
+is best done by writing lots and lots of code, and the fundamental
+ideas in computer science are well-documented far and wide. If one
+source is confusing to you, try a different one. But above all, write
+code. Sometimes, a description of some concept is confusing until you
+try implementing it in code.
 
 We will primarily use the C++ version of book linked below by Clifford
 A. Shaffer. There are two versions of this book that differ only
@@ -123,6 +124,7 @@ The books below are freely available on the web, but in some cases you
 can give the author money if you want a nicer version.
 
 _Data Structures and Algorithm Analysis_ by Clifford A. Shaffer
+
 :: [http://people.cs.vt.edu/~shaffer/Book/](http://people.cs.vt.edu/~shaffer/Book/)
 
 _C++ Language Tutorial_
