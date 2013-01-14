@@ -8,7 +8,7 @@ actually a GitHub repository located here:
 [https://github.com/johnsogg/cs2270](https://github.com/johnsogg/cs2270)
 
 People
-=======
+-------
 
 *Instructor:* Gabe Johnson - gabe.johnson@gmail.com
 
@@ -20,7 +20,13 @@ People
 
 *LAs:*
 
-(none as of yet)
+* Nathaniel Pohl - nathaniel.pohl@colorado.edu
+
+Space/Time Coordinates for Main Lecture
+--------
+
+Where: Ramaley C250
+When: M-W-F 11:00--11:50am
 
 Course Purpose 
 =======
@@ -147,9 +153,9 @@ Here are the general topics we will cover in CS 2270:
 * Course overview
 
 * Desired outcomes:
-  - Write standard datastructs/algos (DSnA)
-  - Understand when DSnA are appropriate
-  - Recognize/create test data for well known DSnA
+  - Write standard datastructs/algos (DS&A)
+  - Understand when DS&A are appropriate
+  - Recognize/create test data for well known DS&A
   
 * Document code:
   - pre/post conditions
