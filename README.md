@@ -197,4 +197,82 @@ Here are the general topics we will cover in CS 2270:
   - Inheritance
   - Graphs
   - Finite State Machines
+  
+Your Rights
+========
 
+Disability Accommodations
+-------
+
+If you qualify for accommodations because of a disability, please
+submit to me a letter from Disability Services in a timely manner so
+that your needs may be addressed. Disability Services determines
+accommodations based on documented disabilities. Contact:
+303-492-8671, Willard 322, and
+http://www.Colorado.EDU/disabilityservices.
+
+Disability Services' letters for students with disabilities indicate
+legally mandated reasonable accommodations. The syllabus statements
+and answers to Frequently Asked Questions can be found at
+http://www.colorado.edu/disabilityservices.
+
+Religious Observances
+-------
+
+Campus policy regarding religious observances requires that faculty
+make every effort to reasonably and fairly deal with all students who,
+because of religious obligations, have conflicts with scheduled exams,
+assignments or required attendance. In this class, {{insert your
+procedures here}} See full details at
+http://www.colorado.edu/policies/fac_relig.html
+
+Classroom Behavior
+-------
+
+Students and faculty each have responsibility for maintaining an
+appropriate learning environment. Those who fail to adhere to such
+behavioral standards may be subject to discipline. Professional
+courtesy and sensitivity are especially important with respect to
+individuals and topics dealing with differences of race, culture,
+religion, politics, sexual orientation, gender variance, and
+nationalities. Class rosters are provided to the instructor with the
+student's legal name. I will gladly honor your request to address you
+by an alternate name or gender pronoun. Please advise me of this
+preference early in the semester so that I may make appropriate
+changes to my records. See polices at
+http://www.colorado.edu/policies/classbehavior.html and at
+http://www.colorado.edu/studentaffairs/judicialaffairs/code.html#student_code.
+
+Honor Code
+------
+
+All students of the University of Colorado at Boulder are responsible
+for knowing and adhering to the academic integrity policy of this
+institution. Violations of this policy may include: cheating,
+plagiarism, aid of academic dishonesty, fabrication, lying, bribery,
+and threatening behavior. All incidents of academic misconduct shall
+be reported to the Honor Code Council (honor@colorado.edu;
+303-725-2273). Students who are found to be in violation of the
+academic integrity policy will be subject to both academic sanctions
+from the faculty member and non-academic sanctions (including but not
+limited to university probation, suspension, or expulsion). Other
+information on the Honor Code can be found at
+http://www.colorado.edu/policies/honor.html and at
+http://www.colorado.edu/academics/honorcode/.
+
+Discrimination and Sexual Harrassment
+--------
+
+The University of Colorado at Boulder policy on Discrimination and
+Harassment http://www.colorado.edu/policies/discrimination.html, the
+University of Colorado policy on Sexual Harassment and the University
+of Colorado policy on Amorous Relationships applies to all students,
+staff and faculty. Any student, staff or faculty member who believes
+s/he has been the subject of discrimination or harassment based upon
+race, color, national origin, sex, age, disability, religion, sexual
+orientation, or veteran status should contact the Office of
+Discrimination and Harassment (ODH) at 303-492-2127 or the Office of
+Judicial Affairs at 303-492-5550. Information about the ODH and the
+campus resources available to assist individuals regarding
+discrimination or harassment can be obtained at
+http://www.colorado.edu/odh
