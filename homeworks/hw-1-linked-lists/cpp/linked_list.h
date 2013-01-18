@@ -32,7 +32,7 @@ std::string report(node* root);
 // insert an integer into the list pointed to by head. the resulting
 // list is one element longer, and the newly appended node has the
 // given data value. consider using the 'append' function to help.
-void append_data(node* head, int data);
+void append_data(node** head, int data);
 
 // this is the same as append_data, except we're adding a node, rather
 // than a value. 
