@@ -1,4 +1,4 @@
-Homework 1: Linked Lists
+Homework 1: Linked Lists (15 points)
 ==========
 
 __Due Friday Jan 25 at 6pm__
@@ -42,23 +42,23 @@ substantially._
 
 The point value for correctly implement each is given.
 
-	node* init_node(int data); // 1 point
+	init_node // 1 point
 	
-	std::string report(node* root); // 2 points
+	report // 2 points
 	
-	void append_data(node* head, int data); // 1 point
+	append_data // 1 point
 	
-	void append(node* head, node* new_node); // 2 points
+	append // 2 points
 
-	void insert_data(node* head, int offset, int data); // 1 point
+	insert_data // 1 point
 
-	void insert(node* head, int offset, node* new_node); // 3 points
+	insert // 3 points
 
-	void remove(node* parent, int offset); // 3 points
+	remove // 3 points
 
-	int size(node* head); // 1 point
+	size // 1 point
 
-	bool contains(node* head, int data); // 1 point
+	contains // 1 point
 
 You must do this assignment in C++.
 

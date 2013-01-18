@@ -36,7 +36,7 @@ void append_data(node* head, int data);
 
 // this is the same as append_data, except we're adding a node, rather
 // than a value. 
-void append(node* head, node* new_node);
+void append(node** head, node* new_node);
 
 // similar to append_data. insert a new node that contains the given
 // data value, such that the new node occupies the offset
@@ -44,16 +44,16 @@ void append(node* head, node* new_node);
 // and beyond are shifted down by one. For example if the list
 // contains 23, 74, 93, and we insert 42 at index 1, the resulting
 // list should be 23, 42, 74, 93.
-void insert_data(node* head, int offset, int data);
+void insert_data(node** head, int offset, int data);
 
 // this is the same as insert_data, except we're inserting a node,
 // rather than a value.
-void insert(node* head, int offset, node* new_node);
+void insert(node** head, int offset, node* new_node);
 
 // remove the node indicated by the given offset. For example if our
 // list contains 23, 74, 93, and we remove offset 1, the resulting
 // list should then contain 23, 93.
-void remove(node* parent, int offset);
+void remove(node** parent, int offset);
 
 // report the number of nodes in the linked list pointed to by head.
 int size(node* head);
