@@ -36,29 +36,38 @@ Instructions
 Download the source files in the 'cpp' directory for homework 1.
 Implement the following functions in `linked_list.cpp`. Use the
 provided Makefile to build your program (cd to where your source code
-lives, where the Makefile is, and type `make`). _Later this afternoon
-I will create a simple testing program that should help out
-substantially._
+lives, where the Makefile is, and type `make`). You may compile and
+run `linked_list_driver` to see how well it works, or not. 
 
-The point value for correctly implement each is given.
+Note that the driver program is just a good start. It is up to you to
+write the test code that convinces you that your code works. Go ahead
+and edit the driver file however you like.
 
-	init_node // 1 point
-	
-	report // 2 points
-	
-	append_data // 1 point
-	
-	append // 2 points
+This is what the test program does out of the box. 
 
-	insert_data // 1 point
+	$ make && ./linked_list_driver
+	c++ -g -Wall -Wextra   -c -o linked_list_driver.o linked_list_driver.cpp
+	c++  -g -Wall -Wextra -o linked_list_driver linked_list_gabe.o linked_list_driver.cpp
+	Testing Linked List
+	Empty List Contents: 
+	Empty List Contents after appending 16: 16 
+	Initial List Contents: 5 
+	After adding 42: 5 42 
+	Should be 42, 32, 99: 5 42 32 99 
+	Added 7 and 10: 5 42 32 99 7 10 
 
-	insert // 3 points
 
-	remove // 3 points
+The point value for correctly implementing each is given below:
 
-	size // 1 point
-
-	contains // 1 point
+1. init_node = 1 point
+1. report = 2 points
+1. append_data = 1 point
+1. append = 2 points
+1. insert_data = 1 point
+1. insert = 3 points
+1. remove = 3 points
+1. size = 1 point
+1. contains = 1 point
 
 You must do this assignment in C++.
 

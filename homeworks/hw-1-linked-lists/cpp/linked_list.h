@@ -27,7 +27,7 @@ node* init_node(int data);
 // return "" (the empty string) if the list is empty, or it might
 // return "1 7 3" or "1 7 3 " (note the space at the end, you can have
 // that there and it is OK).
-std::string report(node* root);
+std::string report(node* head);
 
 // insert an integer into the list pointed to by head. the resulting
 // list is one element longer, and the newly appended node has the

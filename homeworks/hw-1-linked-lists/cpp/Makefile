@@ -9,7 +9,7 @@ CXXFLAGS = -g -Wall -Wextra
 
 # House-keeping build targets.
 
-all : linked_list.o
+all : linked_list_driver
 
 clean :
 	rm -f *.o
@@ -20,3 +20,5 @@ linked_list.o : $(USER_DIR)/linked_list.cpp \
                 $(USER_DIR)/linked_list.h
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/linked_list.cpp
 
+linked_list_driver: linked_list.o linked_list_driver.o
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o linked_list_driver linked_list.o linked_list_driver.cpp
