@@ -43,7 +43,8 @@ Note that the driver program is just a good start. It is up to you to
 write the test code that convinces you that your code works. Go ahead
 and edit the driver file however you like.
 
-This is what the test program does out of the box. 
+After you've implemented some of the functions like report, init_node, 
+and append, this is what the test program does out of the box:
 
 	$ make && ./linked_list_driver
 	c++ -g -Wall -Wextra   -c -o linked_list_driver.o linked_list_driver.cpp
