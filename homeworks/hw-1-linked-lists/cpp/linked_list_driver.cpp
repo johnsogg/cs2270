@@ -20,7 +20,7 @@ int main () {
   // append a few more
   append_data(&head, 32);
   append_data(&head, 99);
-  cout << "Should be 42, 32, 99: " << report(head) << endl;
+  cout << "Should be 5, 42, 32, 99: " << report(head) << endl;
   // Now try appending nodes
   node* seven = init_node(7);
   node* ten = init_node(10);
