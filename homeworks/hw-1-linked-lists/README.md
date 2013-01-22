@@ -98,10 +98,20 @@ the game as soon as possible.__
 Turning In Your Homework
 --------
 
-__RetroGrade will be up sometime late Monday the 21st. Until then,
-hold tight.__
+Turn in your assignments using
+[RetroGrade](http://retrograde.cs.colorado.edu/). This is our new
+automated grading system. You may turn in your assignments as often as
+you like and get instant gratification.
 
-We will use a new automated grading system called RetroGrade. I am
-spending the weekend getting this to run on the department's
-network. Watch this space for further instructions. I will push back
-the due date if I can't get it working by Tuesday.
+Create an account on the RetroGrade server, and be sure to use correct
+information---_especially your student ID number_. To turn in an
+assignment, just use the file upload box to upload your
+`linked_list.cpp` file. Don't mix languages in one upload, though,
+unless you like error messages.
+
+Once the due date has passed, the recorded score will be capped at
+5/15, however you will still be able to tweak your code to make the
+code perfect. This is for all you OCD optimizers out there.
+
+You keep your highest score, so if you have a 12/15 and turn it in
+late, that old 12/15 is still your best score.
