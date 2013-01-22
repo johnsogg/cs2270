@@ -276,3 +276,6 @@ Judicial Affairs at 303-492-5550. Information about the ODH and the
 campus resources available to assist individuals regarding
 discrimination or harassment can be obtained at
 http://www.colorado.edu/odh
+
+
+Hello recitation people!
