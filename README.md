@@ -10,6 +10,8 @@ actually a GitHub repository located here:
 People
 -------
 
+__(See below for office hours info)__
+
 *Instructor:* Gabe Johnson - gabe.johnson@gmail.com
 
 *TAs:*
@@ -21,6 +23,19 @@ People
 *LAs:*
 
 * Nathaniel Pohl - nathaniel.pohl@colorado.edu
+
+Office Hours
+--------
+
+All office hours are held in ECCS 128, also know nas the CSEL. 
+This room requires a keycard for entry, but you can get one by
+following the instructions at [http://csel.cs.colorado.edu/](http://csel.cs.colorado.edu/).
+
+Gabe's Office Hours: Tues/Thurs 11--2
+
+Other people's office hours are (still) TBD, but we will try to
+have coverage throughout the week.
+
 
 Space/Time Coordinates for Main Lecture
 --------
@@ -276,6 +291,3 @@ Judicial Affairs at 303-492-5550. Information about the ODH and the
 campus resources available to assist individuals regarding
 discrimination or harassment can be obtained at
 http://www.colorado.edu/odh
-
-
-Hello recitation people!
