@@ -73,7 +73,7 @@ and append, this is what the test program does out of the box:
 	Empty List Contents after appending 16: 16 
 	Initial List Contents: 5 
 	After adding 42: 5 42 
-	Should be 42, 32, 99: 5 42 32 99 
+	Should be 5, 42, 32, 99: 5 42 32 99 
 	Added 7 and 10: 5 42 32 99 7 10 
 
 
@@ -104,7 +104,7 @@ automated grading system. You may turn in your assignments as often as
 you like and get instant gratification.
 
 Create an account on the RetroGrade server, and be sure to use correct
-information---_especially your student ID number_. To turn in an
+information. _Especially your student ID number_. To turn in an
 assignment, just use the file upload box to upload your
 `linked_list.cpp` file. Don't mix languages in one upload, though,
 unless you like error messages.
