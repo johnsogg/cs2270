@@ -27,15 +27,18 @@ __(See below for office hours info)__
 Office Hours
 --------
 
-All office hours are held in ECCS 128, also know nas the CSEL. 
+All office hours are held in ECCS 128, also known as the CSEL. 
 This room requires a keycard for entry, but you can get one by
 following the instructions at [http://csel.cs.colorado.edu/](http://csel.cs.colorado.edu/).
 
-Gabe's Office Hours: Tues/Thurs 11--2
+The schedule will begin Jan 28. (Gabe is doing office hours already.)
+You might find people in the lab to help, so be bold and give it a
+shot.
 
-Other people's office hours are (still) TBD, but we will try to
-have coverage throughout the week.
+For specific office hours please see the
+**[Google Calendar for CSCI 2270 Office Hours](https://www.google.com/calendar/embed?src=upke37qer9n02m3qpnbm7e9ngg%40group.calendar.google.com&ctz=America/Denver)**
 
+We will be using table tags to identify who is there providing help.
 
 Space/Time Coordinates for Main Lecture
 --------
