@@ -6,6 +6,6 @@
  * its own.
  */
 public class Node {
-    public int data;
+    public int value;
     public Node next;
 }
