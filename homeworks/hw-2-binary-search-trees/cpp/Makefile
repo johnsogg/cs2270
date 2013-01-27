@@ -1,0 +1,27 @@
+# Where to find user code.
+USER_DIR = .
+
+# Flags passed to the preprocessor.
+CPPFLAGS =
+
+# Flags passed to the C++ compiler.
+CXXFLAGS = -g -Wall -Wextra -Wno-write-strings2
+
+# House-keeping build targets.
+
+all : binary_search_tree_driver
+
+clean :
+	rm -f *.o binary_search_tree_driver
+
+# Assignment-specific build rules below.
+
+binary_search_tree.o : $(USER_DIR)/binary_search_tree.cpp	\
+                 $(USER_DIR)/binary_search_tree.h
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/binary_search_tree.cpp
+
+binary_search_tree_driver.o: $(USER_DIR)/binary_search_tree.o $(USER_DIR)/binary_search_tree_driver.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/binary_search_tree_driver.cpp
+
+binary_search_tree_driver: binary_search_tree.o binary_search_tree_driver.o
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o binary_search_tree_driver binary_search_tree.o binary_search_tree_driver.o
