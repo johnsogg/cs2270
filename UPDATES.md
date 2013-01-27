@@ -7,3 +7,7 @@ Notable Updates to 2270 Git Repository
 
 - Jan 23: Added linked_list.cpp to lectures/ folder. This is what I
   typed in class.
+
+- Jan 27: Added `email_policy.md` to main dir
+
+- Jan 27: Uploaded hw 2

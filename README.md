@@ -12,6 +12,9 @@ People
 
 __(See below for office hours info)__
 
+__(See the `email_policy.md` file for info on emailing the instructor
+or the TAs before you send mail.)__
+
 *Instructor:* Gabe Johnson - gabe.johnson@gmail.com
 
 *TAs:*
