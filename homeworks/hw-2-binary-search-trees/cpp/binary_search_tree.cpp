@@ -42,5 +42,4 @@ int size(bt_node* top) {
 
 void to_array(bt_node* top, int arr[]) {
   // implement me
-  return NULL;
 }
