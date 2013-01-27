@@ -36,5 +36,4 @@ correct) English__. I am not a lolcat. If I can't understand what
 you're even asking I am likely to just delete the email without
 responding. This is partly because I am mean, but also because
 communicating clearly is another primary skill of an engineer
-(software or otherwise), and some people don't learn unless they have
-a major problem.
+(software or otherwise).
