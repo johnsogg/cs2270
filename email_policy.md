@@ -20,20 +20,19 @@ pointlessness. When you do email, summarize the problem.
 
 2. Before emailing, try to __debug the problem and find where__ the
 problem arises. You can do this with a debugger, or (as I prefer) you
-can put in printf or cout statements. When you do email, say what you
-did to troubleshoot already.
+can put in `printf` or `cout` statements. When you do email, summarize
+what you've already done to troubleshoot.
 
 3. Email your __TA before emailing Gabe__ on issues that you think the
-TA can handle. They are paid for this.
+TA can handle. They are paid for this. 
 
-4. When emailing about code, __make a GitHub Gist__ and email me the
-link. This way I can refer to symbols by line number, and we can
+4. When emailing about code, __make a GitHub Gist__ and send the
+link. This way we can refer to symbols by line number, and can
 converse using GitHub. You can create a private or public Gist, it
-doesn't matter to me.
+doesn't matter to us.
 
-5. When emailing me about anything, __use correct (or approximatley
-correct) English__. I am not a lolcat. If I can't understand what
-you're even asking I am likely to just delete the email without
-responding. This is partly because I am mean, but also because
-communicating clearly is another primary skill of an engineer
-(software or otherwise).
+5. When emailing us on any topic, __use correct (or approximatley
+correct) English__. If we can't understand what you're even asking we
+may just delete the email without responding. Communicating clearly is
+another primary skill of an engineer (software or otherwise). _If
+English is not your main language, don't worry. Just make an effort._
