@@ -4,8 +4,8 @@
 
 class bt_node:
     data = 0;
-    bt_node left = None;
-    bt_node right = None;
+    bt_node_left = None;
+    bt_node_right = None;
 
 class BinarySearchTree:
 
