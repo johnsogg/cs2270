@@ -3,9 +3,10 @@
 #
 
 class bt_node:
-    data = 0
-    bt_node_left = None
-    bt_node_right = None
+    def __init__(self, data):
+        self.data = data 
+        self.bt_node_left = None
+        self.bt_node_right = None
 
 class BinarySearchTree:
 
