@@ -37,4 +37,4 @@ may just delete the email without responding. Communicating clearly is
 another primary skill of an engineer (software or otherwise). _If
 English is not your main language, don't worry. Just make an effort._
 
-
+[Plz Reed](https://raw.github.com/johnsogg/cs2270/master/Email_guidelines.png)
