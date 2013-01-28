@@ -59,8 +59,9 @@ int size(bt_node* top);
  * with the size() function), and the order of the array elements are
  * the same that is found during an inorder traversal of the tree.
  *
- * Note: you'll have to create and size the array _before_ calling
- * this function.
+ * Note: the array is created and sized before this function is
+ * called. You will have at least size(top) elements available, so you
+ * may safely index [0..size(top)-1].
  */
 void to_array(bt_node* top, int arr[]);
 
