@@ -19,9 +19,13 @@ clean :
 binary_search_tree.o : $(USER_DIR)/binary_search_tree.cpp	\
                  $(USER_DIR)/binary_search_tree.h
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/binary_search_tree.cpp
+	
+UTFramework.o: $(USER_DIR)/UTFramework.cpp	\
+                 $(USER_DIR)/UTFramework.h
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/UTFramework.cpp
 
-binary_search_tree_driver.o: $(USER_DIR)/binary_search_tree.o $(USER_DIR)/binary_search_tree_driver.cpp
+binary_search_tree_driver.o: $(USER_DIR)/binary_search_tree.o $(USER_DIR)/UTFramework.o $(USER_DIR)/binary_search_tree_driver.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/binary_search_tree_driver.cpp
 
-binary_search_tree_driver: binary_search_tree.o binary_search_tree_driver.o
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o binary_search_tree_driver binary_search_tree.o binary_search_tree_driver.o
+binary_search_tree_driver: UTFramework.o binary_search_tree.o binary_search_tree_driver.o
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o binary_search_tree_driver UTFramework.o binary_search_tree.o binary_search_tree_driver.o

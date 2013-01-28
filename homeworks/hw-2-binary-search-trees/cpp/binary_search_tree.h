@@ -1,6 +1,8 @@
 //
 // binary_search_tree.h
 //
+#include <iostream>
+#include <vector>
 
 struct bt_node {
   int data;
