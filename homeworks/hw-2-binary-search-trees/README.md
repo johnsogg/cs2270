@@ -15,3 +15,7 @@ in
 [this tree processing page at CMU](http://www.cs.cmu.edu/~pattis/15-1XX/15-200/lectures/treeprocessing/index.html)
 that gives a fair amount of code examples. It is in psuedocode, but
 you should be able to translate it to C++. (Right?)
+
+I put up my notes on recursion and the binary search tree operations
+in the BinarySearchTrees.pdf file in this directory. That might be
+helpful for review, too.
