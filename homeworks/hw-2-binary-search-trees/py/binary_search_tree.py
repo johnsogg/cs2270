@@ -8,6 +8,8 @@ class bt_node:
     bt_node right = None;
 
 class BinarySearchTree:
+    def __init__(self):
+        self.root = None
 
     def init_node(self, data):
         """
