@@ -4,8 +4,6 @@
 // Please refer to binary_search_tree.h for documentation.
 //
 
-#include <iostream>
-
 #include "binary_search_tree.h"
 
 bt_node* init_node(int data) {
