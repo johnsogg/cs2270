@@ -9,6 +9,18 @@
 public interface BinarySearchTreeIntf {
 
     /**
+     * Returns the top-most node of the tree. If the tree is empty
+     * this must return null. (This is necessary for unit testing).
+     **/
+    BTNode getRootNode();
+
+    /**
+     * Sets the root node of this tree to the provided BTNode. (This
+     * is necessary for unit testing).
+     **/
+    void setRootNode(BTNode newRoot);
+
+    /**
      * Initialize a bt_node with the given data, and two NULL
      * children.
      */

@@ -1,5 +1,14 @@
 public class BinarySearchTree implements BinarySearchTreeIntf {
 
+    public BTNode getRootNode() {
+	return null; // replace this with whatever you call your root
+		     // node. This was necessary for unit testing.
+    }
+
+    public void setRootNode(BTNode newRoot) {
+	/* implement me. This was necessary for unit testing. */
+    }
+    
     public BTNode initNode(int data) { 
 	/* implement me */ 
 	return null;
