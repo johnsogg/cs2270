@@ -2,7 +2,7 @@
 # binary_search_tree.py
 #
 
-class bt_node:
+class TreeNode:
     def __init__(self, data):
         self.data = data 
         self.bt_node_left = None
