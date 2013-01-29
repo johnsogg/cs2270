@@ -6,8 +6,12 @@
 //-------------------------------------------------------------------------------------
 #include "UTFramework.h"
 
+int RETROGRADE_MODE = 0;
+
 namespace Thilenius
 {
+
+
 
 	//===============================     Static Initializations   ==============================
 	string UTFramework::m_currentSuite = "";
@@ -18,18 +22,23 @@ namespace Thilenius
 
 	int UTFramework::m_maxDepth = 0;
 	int UTFramework::m_currentDepth = 0;
+        int UTFramework::m_retroMode = 0; // set to nonzero for retrograde output
 
 	UTFramework::UTFramework(void)
 	{
 	}
 
-	void UTFramework::StartSuite( std::string suiteName )
+  void UTFramework::StartSuite( std::string suiteName )
 	{
 		if ( m_currentSuite == suiteName )
 			return;
 
 		PrintIndent(0);
 		m_currentSuite = suiteName;
+		m_retroMode = 0;
+#ifdef RETRO_MODE
+		m_retroMode = 1;
+#endif
 		m_currentTest = "";
 
 		m_suiteFault = false;
@@ -87,11 +96,21 @@ namespace Thilenius
 		if ( m_currentTest == "" )
 			return;
 		
-		if ( m_testFault )
-			PrintLine( "Failed!", 1, Red );
-		else
-			PrintLine( "Passed.", 1, Green );
+		if ( m_testFault ) {
+		  if (RETROGRADE_MODE) {
+			cout << "RetroGrade Result >\t" 
+			     << m_currentTest << ": -" << endl;
+		  }
+		  PrintLine( "Failed!", 1, Red );
 
+		} else {
+		  if (RETROGRADE_MODE) {
+			cout << "RetroGrade Result >\t" 
+			     << m_currentTest << ": +" << endl;
+		  }
+		  PrintLine( "Passed.", 1, Green );
+
+		}
 		m_currentTest = "";
 		m_testFault = false;
 	}
@@ -172,6 +191,7 @@ namespace Thilenius
 
 	void UTFramework::Print( std::string message, int indentLevel, ConsoleColor color )
 	{
+	  if (RETROGRADE_MODE == 0) {
 		SetColor(Blue);
 		for ( int i = 0; i < indentLevel; i++ )
 		{
@@ -182,16 +202,20 @@ namespace Thilenius
 		cout << message;
 
 		SetColor(White);
+	  }
 	}
 
 	void UTFramework::PrintLine( std::string message, int indentLevel, ConsoleColor color )
 	{
+	  if (RETROGRADE_MODE == 0) {
 		Print(message, indentLevel, color);
 		cout << endl;
+	  }
 	}
 
 	void UTFramework::PrintIndent( int indentLevel )
 	{
+	  if (RETROGRADE_MODE == 0) {
 		SetColor(Blue);
 		for ( int i = 0; i < indentLevel; i++ )
 		{
@@ -199,6 +223,7 @@ namespace Thilenius
 		}
 		cout << endl;
 		SetColor(White);
+	  }
 	}
 
 	// Not that there is a Windows/Linux switch here. Windows gets a handle to

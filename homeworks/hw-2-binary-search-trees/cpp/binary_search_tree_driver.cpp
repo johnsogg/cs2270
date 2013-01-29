@@ -29,6 +29,10 @@
    code caused the seg-fault, find the test that ran BEFORE the fault. 
    Then look at the test after it below.
 
+   This is the same file that RetroGrade uses to assign scores. The
+   good news is that you can run this on your own machine without
+   uploading to RetroGrade. To run in RetroGrade mode, run th
+
 */
 #include "binary_search_tree.h"
 #include "UTFramework.h"
@@ -36,7 +40,7 @@
 using namespace Thilenius;
 using namespace std;
 
-
+extern int RETROGRADE_MODE;
 bt_node* HandBuildNode ( int data );
 bt_node* HandBuildTree ( );
 bool ArrayContains ( int arr[], int size, int value );
@@ -44,7 +48,7 @@ bool ArrayContains ( int arr[], int size, int value );
 
 SUITE_BEGIN("Binary Search Tree")
 
-TEST_BEGIN("Initialize Node")
+TEST_BEGIN("InitializeNode")
 {
   bt_node* four = init_node(4);
   
@@ -77,7 +81,7 @@ TEST_BEGIN("Insert")
 	 "4 should be in the lower right of tree.");
 }TEST_END
 
-TEST_BEGIN("Insert Data")
+TEST_BEGIN("InsertData")
 {
   bt_node* top = HandBuildNode(2);
   
@@ -128,7 +132,7 @@ TEST_BEGIN("Contains")
 	 "Contains( ) returned true for a node that don't actually exist.");
 }TEST_END
 
-TEST_BEGIN("Get Node")
+TEST_BEGIN("GetNode")
 {
   // Hand build a node with 1, 2, 3, 4 in it.
   bt_node* top = HandBuildTree();
@@ -150,7 +154,7 @@ TEST_BEGIN("Get Node")
   IsTrue("Get Node", results, "get_node( ) is not returning the correct node.");
 }TEST_END
 
-TEST_BEGIN("Remove.")
+TEST_BEGIN("Remove")
 {
   // Create separate scopes for this test.
   {
@@ -231,7 +235,7 @@ TEST_BEGIN("Remove.")
   
 }TEST_END
 
-TEST_BEGIN("To Array.")
+TEST_BEGIN("ToArray")
 {
   // Hand build a node with 1, 2, 3, 4 in it.
   bt_node* top = HandBuildTree();
@@ -301,7 +305,11 @@ bool ArrayContains ( int arr[], int size, int value )
   return false;
 }
 
-int main () 
+int main (int argc, char* argv[]) 
 {
+  if (argc > 1) {
+    RETROGRADE_MODE = 1;
+  }
   UTFrameworkInit;
+  
 }

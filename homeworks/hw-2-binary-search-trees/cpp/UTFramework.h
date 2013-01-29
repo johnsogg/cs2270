@@ -120,6 +120,7 @@ namespace Thilenius
 
 		static int m_maxDepth;
 		static int m_currentDepth;
+		static int m_retroMode;
 
 	};
 
@@ -148,10 +149,10 @@ namespace Thilenius
 	//===========================================================================================
 	
 	// See UTFramework.cpp for a full expansion.
-#define SUITE_BEGIN(SuiteName) \
+#define SUITE_BEGIN(SuiteName)			\
 	void UTRunAll () \
 	{ \
-	UTFramework::StartSuite( SuiteName ); \
+	  UTFramework::StartSuite( SuiteName );	\
 	if ( false ){ } \
 
 #define SUITE_END \
@@ -186,7 +187,7 @@ namespace Thilenius
 	UTRunAll (); \
 	} \
 
-#define UTFrameworkInit \
+#define UTFrameworkInit	\
 	signal(SIGSEGV, PosixSegFault); \
 	UTRunAll(); \
 
