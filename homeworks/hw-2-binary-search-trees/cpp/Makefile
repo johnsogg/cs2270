@@ -5,7 +5,7 @@ USER_DIR = .
 CPPFLAGS =
 
 # Flags passed to the C++ compiler.
-CXXFLAGS = -g -Wall -Wextra -Wno-write-strings2
+CXXFLAGS = -g -Wall -Wextra -Wno-write-strings2 -std=c++0x
 
 # House-keeping build targets.
 
