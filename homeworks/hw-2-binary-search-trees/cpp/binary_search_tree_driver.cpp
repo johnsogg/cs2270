@@ -247,7 +247,6 @@ TEST_BEGIN("ToArray")
   // Hand build a node with 1, 2, 3, 4 in it.
   bt_node* top = HandBuildTree();
   
-  int trueArray[] = {0, 1, 2, 3, 4, 5};
   int results[6] = {-1, -1, -1, -1, -1, -1};
   to_array(top, results);
   
@@ -312,11 +311,19 @@ bool ArrayContains ( int arr[], int size, int value )
   return false;
 }
 
-int main (int argc, char* argv[]) 
+void printUsage(char call[]) {
+    cout << " Usage: " << call << " [--retrograde]" << endl;
+}
+ 
+int main (int argc, char* argv[])
 {
-  if (argc > 1) {
+  if (argc == 2 && strcmp(argv[1], "--retrograde") == 0) {
     RETROGRADE_MODE = 1;
+  } else if (argc != 1) {
+    printUsage(argv[0]);
+    return -1;
   }
+ 
   UTFrameworkInit;
-  
+ 
 }
