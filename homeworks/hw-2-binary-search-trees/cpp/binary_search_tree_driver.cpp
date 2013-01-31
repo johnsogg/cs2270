@@ -31,7 +31,10 @@
 
    This is the same file that RetroGrade uses to assign scores. The
    good news is that you can run this on your own machine without
-   uploading to RetroGrade. To run in RetroGrade mode, run th
+   uploading to RetroGrade. To run in RetroGrade mode, run the program
+   with the --retrograde flag, like this:
+
+   ./binary_search_tree_driver --retrograde
 
 */
 #include "binary_search_tree.h"
