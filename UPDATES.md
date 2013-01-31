@@ -11,3 +11,5 @@ Notable Updates to 2270 Git Repository
 - Jan 27: Added `email_policy.md` to main dir
 
 - Jan 27: Uploaded hw 2
+
+- Jan 30: Updated Python impl definition for HW2. It wasn't even valid Python syntax.
