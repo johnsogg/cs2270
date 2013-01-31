@@ -229,8 +229,15 @@ TEST_BEGIN("Remove")
       top->right->right != NULL && 
       top->right->right->data == 5;
     
-    IsTrue("Remove Trunk", result1 || result2, 
-	   "Failed to remove the trunk ( branch with two children ).");
+	// Special case
+	bool result3 = top != NULL						&& top->data == 4 &&
+		top->right != NULL				&& top->right->data == 5 &&
+		top->left != NULL				&& top->left->data == 3 &&
+		top->left->left != NULL			&& top->left->left->data == 2 &&
+		top->left->left->left != NULL	&& top->left->left->left->data == 0 &&
+
+		IsTrue("Remove Trunk", result1 || result2 || result3, 
+		"Failed to remove the trunk ( branch with two children ).");
   }
   
 }TEST_END
