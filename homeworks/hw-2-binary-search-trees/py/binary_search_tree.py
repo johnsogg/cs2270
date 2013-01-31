@@ -3,11 +3,18 @@
 #
 
 class bt_node:
-    data = 0;
-    bt_node left = None;
-    bt_node right = None;
+    data = 0
+    left = None
+    right = None
 
 class BinarySearchTree:
+
+    def __init__(self):
+        """
+        Please use 'root_node' to refer to your topmost entry. This is
+        needed for unit testing. It is a bt_node object.
+        """
+        self.root_node = None
 
     def init_node(self, data):
         """
