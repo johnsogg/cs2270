@@ -46,6 +46,8 @@ using namespace std;
 extern int RETROGRADE_MODE;
 bt_node* HandBuildNode ( int data );
 bt_node* HandBuildTree ( );
+void inOrderWalk( bt_node* top, int arr[]);
+int treeSize (bt_node* top);
 bool ArrayContains ( int arr[], int size, int value );
 
 
@@ -132,7 +134,7 @@ TEST_BEGIN("Contains")
   IsTrue("Contains Real", containsReal, 
 	 "Contains( ) returned false for a node that actually exists.");
   IsTrue("Contains Fake", containsFake, 
-	 "Contains( ) returned true for a node that don't actually exist.");
+	 "Contains( ) returned true for a node that doesn't actually exist.");
 }TEST_END
 
 TEST_BEGIN("GetNode")
@@ -166,17 +168,22 @@ TEST_BEGIN("Remove")
     
     // remove the leaf node 5
     remove( &top, 5 );
-    bool result = top != NULL && 
-      top->data == 1 &&
-      top->right != NULL && 
-      top->right->data == 4 &&
-      top->left != NULL	&& 
-      top->left->data == 0 &&
-      top->right->left != NULL && 
-      top->right->left->data == 3 &&
-      top->right->left->left != NULL && 
-      top->right->left->left->data == 2 &&
-      top->right->right == NULL;
+
+    int size = treeSize(top);
+    int contents[size];
+    int expected[5] = {0, 1, 2, 3, 4};
+
+    inOrderWalk(top, contents);
+   
+    bool result = true;
+
+    for (int i = 0; i < 5; i++) {
+      if (contents[i] != expected[i]) {
+        result = false;
+        break;
+      }
+    }
+    result = result && size == 5;
     
     IsTrue("Remove Leaf", result, "Failed to remove a leaf node.");
   }
@@ -186,16 +193,22 @@ TEST_BEGIN("Remove")
     
     // remove the branch node 3
     remove( &top, 3 );
-    bool result = top != NULL &&
-      top->data == 1 &&
-      top->right != NULL && 
-      top->right->data == 4 &&
-      top->left != NULL	&& 
-      top->left->data == 0 &&
-      top->right->left != NULL && 
-      top->right->left->data == 2 &&
-      top->right->right != NULL && 
-      top->right->right->data == 5;
+
+    int size = treeSize(top);
+    int contents[size];
+    int expected[5] = {0, 1, 2, 4, 5};
+
+    inOrderWalk(top, contents);
+   
+    bool result = true;
+
+    for (int i = 0; i < 5; i++) {
+      if (contents[i] != expected[i]) {
+        result = false;
+        break;
+      }
+    }
+    result = result && size == 5;
     
     IsTrue("Remove Branch", result, "Failed to remove a branch with one child.");
   }
@@ -208,39 +221,24 @@ TEST_BEGIN("Remove")
     // what bias the tree is.
     remove( &top, 1 );
     
-    // Right biased
-    bool result1 = top != NULL && 
-      top->data == 2 &&
-      top->left != NULL && 
-      top->left->data == 0 &&
-      top->right != NULL && 
-      top->right->data == 4 &&
-      top->right->left != NULL && 
-      top->right->left->data == 3 && 
-      top->right->right != NULL	&& 
-      top->right->right->data == 5;
-    
-    // Left biased
-    bool result2 = top != NULL && 
-      top->data == 0 &&
-      top->right != NULL && 
-      top->right->data == 4 &&
-      top->right->left != NULL && 
-      top->right->left->data == 3 &&
-      top->right->left->left != NULL && 
-      top->right->left->left->data == 2 &&
-      top->right->right != NULL && 
-      top->right->right->data == 5;
-    
-	// Special case
-	bool result3 = top != NULL						&& top->data == 4 &&
-		top->right != NULL				&& top->right->data == 5 &&
-		top->left != NULL				&& top->left->data == 3 &&
-		top->left->left != NULL			&& top->left->left->data == 2 &&
-		top->left->left->left != NULL	&& top->left->left->left->data == 0;
+    int size = treeSize(top);
+    int contents[size];
+    int expected[5] = {0, 2, 3, 4, 5};
 
-		IsTrue("Remove Trunk", result1 || result2 || result3, 
-		"Failed to remove the trunk ( branch with two children ).");
+    inOrderWalk(top, contents);
+   
+    bool result = true;
+
+    for (int i = 0; i < 5; i++) {
+      if (contents[i] != expected[i]) {
+        result = false;
+        break;
+      }
+    }
+    result = result && size == 5;
+    
+    IsTrue("Remove Trunk", result, 
+	   "Failed to remove the trunk ( branch with two children ).");
   }
   
 }TEST_END
@@ -303,6 +301,42 @@ bt_node* HandBuildTree ( )
   return top;
 }
 
+static void _inOrderWalk( bt_node* top, int arr[], int * index ) {
+  if (!top) return;
+  // first make an array out of the left side
+  if (top->left) _inOrderWalk(top->left, arr, index);
+
+  // add our current node
+  arr[*index] = top->data;
+  (*index)++;
+
+  // and make one from the right
+  if (top->right) _inOrderWalk(top->right, arr, index);
+}
+
+void inOrderWalk( bt_node* top, int arr[]) {
+  // check for empty tree
+  if (!top) return;
+
+  int index = 0;
+
+  // call our helper, with the added index field
+  // to keep track of our position in the array
+  _inOrderWalk(top, arr, &index);
+}
+
+int treeSize( bt_node* top) {
+  if (!top) return 0; 
+
+  int left = 0; 
+  int right = 0; 
+
+  if (top->left)  left =  treeSize(top->left); 
+  if (top->right) right = treeSize(top->right); 
+
+  return left + right + 1; 
+}
+
 bool ArrayContains ( int arr[], int size, int value )
 {
   for ( int i = 0; i < size; i++ )
@@ -317,16 +351,15 @@ bool ArrayContains ( int arr[], int size, int value )
 void printUsage(char call[]) {
     cout << " Usage: " << call << " [--retrograde]" << endl;
 }
- 
-int main (int argc, char* argv[])
+
+int main (int argc, char* argv[]) 
 {
-  if (argc == 2 && strcmp(argv[1], "--retrograde") == 0) {
-    RETROGRADE_MODE = 1;
-  } else if (argc != 1) {
+  if (argc == 2 && strcmp(argv[1], "--retrograde") == 0) RETROGRADE_MODE = 1;
+  else if (argc != 1) { 
     printUsage(argv[0]);
     return -1;
   }
- 
+
   UTFrameworkInit;
- 
+
 }
