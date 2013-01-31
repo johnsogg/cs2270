@@ -39,6 +39,7 @@
 */
 #include "binary_search_tree.h"
 #include "UTFramework.h"
+#include <cstring>
 
 using namespace Thilenius;
 using namespace std;
