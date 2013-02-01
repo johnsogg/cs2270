@@ -152,7 +152,7 @@ namespace Thilenius
 		// Let the POSIX handler call the next depth of tests
 	}
 
-	void UTFramework::FaultException( std::exception exeption )
+	void UTFramework::FaultException(const std::exception exeption )
 	{
 		PrintLine( "- Exception!", 2, Red );
 		PrintLine( "Your function raised an exception during execution:", 3, Yellow );
