@@ -94,7 +94,7 @@ namespace Thilenius
 		static void Fail ( std::string name, std::string message );
 
 		static void SegFaultRecovery ( );
-		static void FaultException ( std::exception exeption );
+		static void FaultException ( const std::exception& exeption );
 		static void UnknownExHandler ( );
 
 		static bool IsTesting ( );
