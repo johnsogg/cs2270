@@ -30,14 +30,19 @@ using namespace std;
  * outside as well.
  *
  * low_idx and high_idx: these are the current indices for the
- * quicksort algorithm, and are normal pass-by-value parameters.
+ * quicksort algorithm, and are normal pass-by-value parameters. Both
+ * of these indices are inclusive: they refer to an addressable
+ * element of the data vector.
  **/
 void quicksort(vector<int> &data, int low_idx, int high_idx);
 
 /**
- * This is the partition function for quicksort. 
+ * This is the partition function for quicksort. Input parameters have
+ * same semantics as for quicksort. An additional parameter is given
+ * for the pivot location.
  **/
-void quicksort_partition(vector<int> &data, int low_idx, int high_idx);
+void quicksort_partition(vector<int> &data, int low_idx, int high_idx, 
+			 int pivot_index);
 
 /**
  * The bubblesort is probably the easiest sorting algorithm to
@@ -66,9 +71,9 @@ vector<int> merge(vector<int> &left, vector<int> &right);
  * See http://en.wikipedia.org/wiki/Sorting_algorithm for a list.
  *
  * Only rules are: (1) it has to have the following signature, and the
- * calling code will expect 'data' to be in non-decreasing order, and
- * (2) you have to write something new---no relying on the other
- * functions you've implemented.
+ * calling code will expect 'data' to be in non-decreasing order when
+ * it returns, and (2) you have to write something new---no relying on
+ * the other functions you've implemented.
  **/
 void mystery_sort(vector<int> &data);
 
