@@ -89,7 +89,7 @@ TEST_BEGIN("BubbleSort")
   vector<int> input_data_orig = get_copy(input_data);
 
   size_t size_before = input_data.size();
-  quicksort(input_data, 0, (int) size_before);
+  bubblesort(input_data);
   IsTrue("Correct Size", input_data.size() == size_before,
 	 "Bubble Sort is changing the size of the input vector.");
   IsTrue("Contain Same Elements", vectors_contain_same(input_data, input_data_orig),
@@ -106,7 +106,7 @@ TEST_BEGIN("MergeSort")
   vector<int> input_data_orig = get_copy(input_data);
 
   size_t size_before = input_data.size();
-  quicksort(input_data, 0, (int) size_before);
+  mergesort(input_data);
   IsTrue("Correct Size", input_data.size() == size_before,
 	 "Merge Sort is changing the size of the input vector.");
   IsTrue("Contain Same Elements", vectors_contain_same(input_data, input_data_orig),
@@ -124,7 +124,7 @@ TEST_BEGIN("MysterySort")
   vector<int> input_data_orig = get_copy(input_data);
 
   size_t size_before = input_data.size();
-  quicksort(input_data, 0, (int) size_before);
+  mystery_sort(input_data);
   IsTrue("Correct Size", input_data.size() == size_before,
 	 "Mystery Sort is changing the size of the input vector.");
   IsTrue("Contain Same Elements", vectors_contain_same(input_data, input_data_orig),
