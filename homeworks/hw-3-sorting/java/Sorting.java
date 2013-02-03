@@ -11,17 +11,13 @@ import java.util.ArrayList;
 
 public class Sorting implements SortingIntf {
 
-    static void say(String what) {
-	System.out.println(what);
-    }
-
     public void quicksort(List<Integer> data, int low_idx, int high_idx) {
 
     }
 
     public int quicksort_partition(List<Integer> data, int low_idx, int high_idx, 
 			     int pivot_index) {
-	return -1; //
+	return -1;
 
     }
 
