@@ -37,7 +37,7 @@ void quicksort(vector<int> &data, int low_idx, int high_idx) {
   // implement me
 }
 
-void quicksort_partition(vector<int> &data, int low_idx, int high_idx) {
+int quicksort_partition(vector<int> &data, int low_idx, int high_idx) {
   // implement me
 
 }

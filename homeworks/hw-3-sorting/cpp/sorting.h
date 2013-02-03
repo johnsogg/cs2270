@@ -39,9 +39,11 @@ void quicksort(vector<int> &data, int low_idx, int high_idx);
 /**
  * This is the partition function for quicksort. Input parameters have
  * same semantics as for quicksort. An additional parameter is given
- * for the pivot location.
+ * for the pivot location. 
+ *
+ * The modified pivot index is returned.
  **/
-void quicksort_partition(vector<int> &data, int low_idx, int high_idx, 
+int quicksort_partition(vector<int> &data, int low_idx, int high_idx, 
 			 int pivot_index);
 
 /**

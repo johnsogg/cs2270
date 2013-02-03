@@ -38,9 +38,11 @@ public interface SortingIntf {
     /**
      * This is the partition function for quicksort. Input parameters have
      * same semantics as for quicksort. An additional parameter is given
-     * for the pivot location.
+     * for the input pivot location.
+     *
+     * This function returns the adjusted pivot_index.
      **/
-    void quicksort_partition(List<Integer> data, int low_idx, int high_idx, 
+    int quicksort_partition(List<Integer> data, int low_idx, int high_idx, 
 			     int pivot_index);
 
     /**

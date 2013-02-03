@@ -33,9 +33,9 @@ def quicksort(data, low_idx, high_idx):
 
 #  This is the partition function for quicksort. Input parameters have
 #  same semantics as for quicksort. An additional parameter is given
-#  for the pivot location.
-#
-#  This doesn't return anything: the result is stored in 'data'.
+#  for the pivot location. 
+# 
+#  The modified pivot location is returned. 
 def quicksort_partition(data, low_idx, high_idx, pivot_index):
     pass
 
