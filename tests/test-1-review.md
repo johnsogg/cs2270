@@ -105,9 +105,7 @@ ranging from N to M. It should have the following prototype:
 
 	int product(int low, int high);
 	
-If the user calls `product(3, 5)` the result is `60`, since that is `3
-* 4 * 5`. If the user calls `product(3, 10)` the result is `3 * 4 * 5
-  * 6 * 7 * 8 * 9 * 10`, which happens to be `1814400`.
+If the user calls `product(3, 5)` the result is `60`, since that is `3 * 4 * 5`. If the user calls `product(3, 10)` the result is `3 * 4 * 5 * 6 * 7 * 8 * 9 * 10`, which happens to be `1814400`.
 
 Recursive Linked List `size`
 --------
