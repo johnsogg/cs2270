@@ -20,10 +20,11 @@ will appear on the test.
 Design
 =====
 
-Design an algorithm that creates a copy of a binary search tree, but
-with the inorder search traversal reversed. For example, if the input
-tree has inorder traversal order [3, 7, 9, 9, 10, 15], the resulting
-tree should have traversal order [ 15, 10, 9, 9, 7, 3 ]. 
+Design an algorithm that creates a copy of a binary tree, but with the
+inorder search traversal reversed. For example, if the input tree has
+inorder traversal order [3, 7, 9, 9, 10, 15], the resulting tree
+should have traversal order [ 15, 10, 9, 9, 7, 3 ]. Note that this is
+a plain binary tree, __not__ a binary search tree.
 
 You don't need to write C++. Just convince us that you can identify
 the general strategy, what the main problems are, and so on. You
