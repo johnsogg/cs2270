@@ -50,7 +50,7 @@ There is a bug in the following code that causes a segmentation fault.
 	1 int add_to_all(node** top_ref, int num) {
 	2   node* cursor = *top_ref;
 	3   do {
-    4      cursor->value = cursor->value + num;
+        4      cursor->value = cursor->value + num;
 	5 	   cout << cursor->value << endl;
 	6      cursor = cursor->next;
 	7   } while (cursor != NULL);
@@ -59,8 +59,8 @@ There is a bug in the following code that causes a segmentation fault.
 First, what does a segmentation fault mean? Where are some likely
 places to look for bugs when you get a segfault?
 
-Second, assume that we know that `top_ref` is not null, and `*top_ref`
-is also not null. Identify the first line where a segmentation fault
+Second, assume that we know that `top_ref` is not null. 
+Identify the first line where a segmentation fault
 could occur.
 
 Pointers
