@@ -50,7 +50,7 @@ There is a bug in the following code that causes a segmentation fault.
 	1 int add_to_all(node** top_ref, int num) {
 	2   node* cursor = *top_ref;
 	3   do {
-        4      cursor->value = cursor->value + num;
+	4      cursor->value = cursor->value + num;
 	5 	   cout << cursor->value << endl;
 	6      cursor = cursor->next;
 	7   } while (cursor != NULL);
