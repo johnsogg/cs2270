@@ -1,8 +1,9 @@
 UTFramework
 ==================
 
-Author: Alec G Thilenius
-Version: 1.2.2
+Author: *Alec G Thilenius*
+
+Version: *1.2.2*
 
 A simple unit testing framework designed to be bundled with homework assignments. The Framework is also being used as a back end driver for RetroGrade, the online grading system create by Gabe. These files will be updated when a new release has been tested and stabilize.
 
