@@ -7,12 +7,18 @@ The purpose is to take on a very complicated data structure, and
 proceed purposefully and systematically according to a design that you
 create.
 
-You will find this useful:
+You will find these useful:
+
+[B-Trees](http://cis.stvincent.edu/html/tutorials/swd/btree/btree.html)
+by D. Carlson and I. Minerd at Saint Vincent College.
 
 [B-Tree Chapter](http://zgking.com:8080/home/donghui/publications/books/dshandbook_BTree.pdf)
 by D. Zhang. In Handbook of Data Structures and Applications,
 D. P. Mehta, S. Sahni (editors), Chapman & Hall/CRC, ISBN
 1-5848-8435-5, 2004.
+
+There is also a section in the Shaffer book but it is short and
+cryptic.
 
 This week's homework is NOT graded by RetroGrade. You will write
 something and send it according to the instructions below.
@@ -40,12 +46,21 @@ diagrams. If you do, document your work in pictures. The diagrams can
 help you figure out how low-level nodes work, and how the high-level
 B-Tree works.
 
-B-Tree Head File Soon
+B-Tree Header File
 --------
 
-I will put up the header file early this week. Don't design yourself
-into a box. You can get started without knowing the exact signature
-for each function.
+The header file is available in `cpp/btree.h`. You will notice that
+there are only three functions in there.
+
+It is up to you to test that all the invariants are intact after each
+insert/remove operation. I suggest you take a look at the
+`invariants.md` file and write some code that checks each of them, and
+use that code as you test.
+
+You will need to write many functions that are not specified in the
+header file. You may write a separate header file and (next week)
+submit it along with your implementation file. Just be sure you
+`#include` it in your implementation file.
 
 What You Turn In
 -----------
