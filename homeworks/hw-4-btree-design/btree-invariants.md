@@ -37,7 +37,7 @@ For this assignment we will adhere to the following invariants:
 3. Index nodes have at least `round_up(m/2)` children.
 4. If the root is not a leaf, it has at least two children.
 5. All leaves are at the same level.
-6. Index nodes with k children contain k−1 keys.
+6. Index nodes with `k` children contain `k−1` keys.
 7. The node pointed to by `child[i]` holds keys that are less than
    `key[i]`. The node pointed to by the final child pointer holds keys
    that are larger than the final key.
