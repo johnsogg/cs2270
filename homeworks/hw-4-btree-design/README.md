@@ -23,6 +23,18 @@ cryptic.
 This week's homework is NOT graded by RetroGrade. You will write
 something and send it according to the instructions below.
 
+This isn't a Production B-Tree
+---------
+
+Lots of the documentation you'll find on the internet assume that
+you're actually trying to implement a database or filesystem. We're
+not doing that. This will be an entirely _in-memory_ data structure,
+so you can ignore all those oblique references to `DiskRead` and
+whatnot.
+
+What to Write
+----------
+
 Write a __plain text__ document that outlines how you are going to go
 about implementing the B-Tree. It does not need to be long, but it
 does need to be thoughtful.
@@ -45,6 +57,10 @@ might help. I strongly recommend making whiteboard or pencil-on-napkin
 diagrams. If you do, document your work in pictures. The diagrams can
 help you figure out how low-level nodes work, and how the high-level
 B-Tree works.
+
+In addition to writing some flowerly English about how awesome your
+strategy is, we also recommend you start _actually writing the test
+code_ as soon as you can. You can turn this in along 
 
 B-Tree Header File
 --------
@@ -73,8 +89,10 @@ Here's a checklist:
 * Be sure to make the subject line include the string [b-tree]
   including the square brackets so we can filter them.
 * CC gabe.johnson@gmail.com
-* If you make diagrams or take pictures, zip them up (tarballs are
-  OK), but be sure to use PDF, PNG, or JPEG format.
+* If you have more than one file (e.g. your plain text doc plus
+  diagrams, pictures, test code), zip them up together (tarballs are
+  OK). Be sure to use plain text, PDF, PNG, or JPEG format. Then email
+  the zip file so you're only sending one attachment.
 * Any photos should be less than 100k or so.
 * Did I mention that the document has to be __plain text__? If you
   send a Word document, I will personally install a 50 point minus for
