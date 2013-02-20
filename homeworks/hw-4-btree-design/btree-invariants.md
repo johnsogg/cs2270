@@ -34,7 +34,8 @@ For this assignment we will adhere to the following invariants:
 
 1. A node's keys are kept in ascending order, starting at index 0.
 2. A node may have at most `m` children.
-3. Index nodes have at least `round_up(m/2)` children.
+3. Index nodes have at least `round_up(m/2)` children. _By inference
+this means index nodes have at least `round_up(m/2)-1` keys._
 4. If the root is not a leaf, it has at least two children.
 5. All leaves are at the same level.
 6. Non-leaf nodes with `k` children contain `k−1` keys.
@@ -43,3 +44,11 @@ For this assignment we will adhere to the following invariants:
    that are larger than the final key.
 8. Leaves must have at least `round_up(m/2) - 1` keys.
 
+The `round_up` function is equivalent to the C++ `ceil` function: it
+gives you the smallest integer that is equal to or greater than the
+input. Examples:
+
+	round_up(4/2) = round_up(2)   = 2
+	round_up(5/2) = round_up(2.5) = 3
+	round_up(6/2) = round_up(3)   = 3
+	round_up(7/2) = round_up(3.5) = 4
