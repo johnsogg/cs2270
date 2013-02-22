@@ -6,8 +6,13 @@
 //-------------------------------------------------------------------------------------
 #include "UTFramework.h"
 
+int RETROGRADE_MODE = 0;
+
 namespace Thilenius
 {
+
+
+
 	//===============================     Static Initializations   ==============================
 	string UTFramework::m_currentSuite = "";
 	string UTFramework::m_currentTest = "";
@@ -17,19 +22,23 @@ namespace Thilenius
 
 	int UTFramework::m_maxDepth = 0;
 	int UTFramework::m_currentDepth = 0;
-	RunningMode UTFramework::m_mode = Normal;
+        int UTFramework::m_retroMode = 0; // set to nonzero for retrograde output
 
 	UTFramework::UTFramework(void)
 	{
 	}
 
-	void UTFramework::StartSuite( std::string suiteName )
+  void UTFramework::StartSuite( std::string suiteName )
 	{
 		if ( m_currentSuite == suiteName )
 			return;
 
 		PrintIndent(0);
 		m_currentSuite = suiteName;
+		m_retroMode = 0;
+#ifdef RETRO_MODE
+		m_retroMode = 1;
+#endif
 		m_currentTest = "";
 
 		m_suiteFault = false;
@@ -86,25 +95,20 @@ namespace Thilenius
 	{
 		if ( m_currentTest == "" )
 			return;
+		
+		if ( m_testFault ) {
+		  if (RETROGRADE_MODE) {
+			cout << "RetroGrade Result >\t" 
+			     << m_currentTest << ": -" << endl;
+		  }
+		  PrintLine( "Failed!", 1, Red );
 
-		if ( m_testFault ) 
-		{
-			if (m_mode == RetroMode) 
-			{
-				cout << "RetroGrade Result >\t" 
-					<< m_currentTest << ": -" << endl;
-			}
-			PrintLine( "Failed!", 1, Red );
-
-		} 
-		else 
-		{
-			if (m_mode == RetroMode) 
-			{
-				cout << "RetroGrade Result >\t" 
-					<< m_currentTest << ": +" << endl;
-			}
-			PrintLine( "Passed.", 1, Green );
+		} else {
+		  if (RETROGRADE_MODE) {
+			cout << "RetroGrade Result >\t" 
+			     << m_currentTest << ": +" << endl;
+		  }
+		  PrintLine( "Passed.", 1, Green );
 
 		}
 		m_currentTest = "";
@@ -148,7 +152,7 @@ namespace Thilenius
 		// Let the POSIX handler call the next depth of tests
 	}
 
-	void UTFramework::FaultException( const std::exception& exeption )
+	void UTFramework::FaultException( std::exception exeption )
 	{
 		PrintLine( "- Exception!", 2, Red );
 		PrintLine( "Your function raised an exception during execution:", 3, Yellow );
@@ -169,21 +173,6 @@ namespace Thilenius
 		EndTest();
 	}
 
-	void UTFramework::TimeoutFault ( )
-	{
-		PrintLine( "- Timeout!", 2, Red );
-		PrintLine( "Your function likely has an infinite loop in it.", 3, Yellow );
-		m_testFault = true;
-		m_suiteFault = true;
-
-		EndTest();
-	}
-	
-	void UTFramework::SetMode( RunningMode mode )
-	{
-		m_mode = mode;
-	}
-
 	bool UTFramework::IsTesting()
 	{
 		if ( m_currentSuite != "" )
@@ -192,44 +181,49 @@ namespace Thilenius
 		return false;
 	}
 
+	//Deprecated. No need for a singleton instance.
+	//UTFramework& UTFramework::GetInstance()
+	//{
+	//	// C++ Singleton pattern.
+	//	static UTFramework instance;
+	//	return instance;
+	//}
+
 	void UTFramework::Print( std::string message, int indentLevel, ConsoleColor color )
 	{
-		if (m_mode == Normal) 
+	  if (RETROGRADE_MODE == 0) {
+		SetColor(Blue);
+		for ( int i = 0; i < indentLevel; i++ )
 		{
-			SetColor(Blue);
-			for ( int i = 0; i < indentLevel; i++ )
-			{
-				cout << "|   ";
-			}
-
-			SetColor(color);
-			cout << message;
-
-			SetColor(White);
+			cout << "|   ";
 		}
+
+		SetColor(color);
+		cout << message;
+
+		SetColor(White);
+	  }
 	}
 
 	void UTFramework::PrintLine( std::string message, int indentLevel, ConsoleColor color )
 	{
-		if (m_mode == Normal) 
-		{
-			Print(message, indentLevel, color);
-			cout << endl;
-		}
+	  if (RETROGRADE_MODE == 0) {
+		Print(message, indentLevel, color);
+		cout << endl;
+	  }
 	}
 
 	void UTFramework::PrintIndent( int indentLevel )
 	{
-		if (m_mode == Normal) 
+	  if (RETROGRADE_MODE == 0) {
+		SetColor(Blue);
+		for ( int i = 0; i < indentLevel; i++ )
 		{
-			SetColor(Blue);
-			for ( int i = 0; i < indentLevel; i++ )
-			{
-				cout << "|   ";
-			}
-			cout << endl;
-			SetColor(White);
+			cout << "|   ";
 		}
+		cout << endl;
+		SetColor(White);
+	  }
 	}
 
 	// Not that there is a Windows/Linux switch here. Windows gets a handle to
@@ -300,92 +294,5 @@ namespace Thilenius
 		}
 #endif
 	}
-	
-	//===========================================================================================
-	//=============================== Free Function  Declarations  ==============================
-	//===========================================================================================
-	void PosixSegFault(int signum)
-	{
-		if ( UTFramework::IsTesting ( ) )
-		{
-			signal(SIGSEGV, PosixSegFault);
-			UTFramework::SegFaultRecovery();
-			Thilenius::TestingFunction( );
-		}
-		else
-			signal(signum, SIG_DFL);
-	}
-
-	bool isThreadFinished = false;
-
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
-	// WINDOWS. Reduced functionality.
-
-	void ForkThread ( )
-	{
-		// Single threaded
-		signal(SIGSEGV, PosixSegFault);
-		TestingFunction( );
-	}
-
-#else
-	// LINUX POSIX Threading ( Not supported on VC++ )
-	// Yes I can use WINThreads. The POSIX SIGSEGV handler will
-	// not catch a SIGSEG on a non-UI thread though.
-
-	unsigned int get_ticks()
-	{
-	  struct timeval tv;
-
-	  gettimeofday(&tv, NULL);
-	  return (tv.tv_usec/1000 + tv.tv_sec * 1000);
-	}
-
-	void* PosixThreadFork ( void* )
-	{
-		signal(SIGSEGV, PosixSegFault);
-		
-		TestingFunction( );
-		
-		isThreadFinished = true;
-		return (void*) 0;
-	}
-
-	void ForkThread ( )
-	{
-		pthread_t threadHandle;
-		unsigned int startTime = get_ticks();
-		
-		pthread_create( &threadHandle, NULL, PosixThreadFork, NULL );
-		
-		while ( (get_ticks() - startTime ) < RUN_TIMEOUE )
-		{
-			if (isThreadFinished == true)
-				break;
-			
-			usleep(10 * 1000);
-		}
-		
-		if (isThreadFinished == false)
-		{
-			//DEBUG_INFO ( "Threads timed out." );
-			
-			// Kill the threads
-			pthread_cancel(threadHandle);
-			
-			UTFramework::TimeoutFault();
-			ForkThread ( );
-		}
-		else
-		{
-			//DEBUG_INFO ( "Threads Done." );
-		}
-
-		pthread_join(threadHandle, NULL);
-	}
-
-#endif
-	
-
 
 }

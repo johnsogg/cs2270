@@ -6,7 +6,6 @@
 //-------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------
-// V 1.2.2
 
 // Abstract:
 // A simple unit testing framework designed to be bundled with homework assignments.
@@ -14,51 +13,69 @@
 // students.
 
 // Supported:
+//	- Window ( X86 / AMD64 )
 //	- Linux
-//	- WIN32 VC++ ( Reduced functionality )
-//	- Infinite loop detection and recovery
 //	- std::exception catching
 //	- unknown exception catching
 //	- Segmentation Fault catching
-//		- Note SegFault catching via POSIX handler. Must be a POSIX compatible system.
+//		- Not SegFault catching via POSIX handler. Must be a POSIX compatible system.
 
-// Reduced functionality
-//	- Infinite loop detection is disabled in WINDOWS
-//	- SegFault handling may not work as intended in VS2012
+// Planned:
+//	- Threaded timeout assertions
+
+// Example usage:
+/*
+
+	#include "UTFramework.h"
+	using namespace Thilenius;
+
+	SUITE_BEGIN("Hello Suite!")
+
+	TEST_BEGIN("Hello Test One!")
+	{
+		UTFramework::IsTrue("One Equals One.", 1 == 1, "This shows if 1 != 1");
+		UTFramework::IsTrue("SegFaulting for fun...", true, "");
+		*((int*)0) = 4;
+	}TEST_END
+
+	TEST_BEGIN("Hello Test Two!")
+	{
+		UTFramework::IsTrue("Throwing STD::Exception...", true, "");
+	}TEST_END
+
+	SUITE_END
+
+
+	int main ()
+	{
+		UTFrameworkInit;
+	}
+*/
 //-------------------------------------------------------------------------------------
-
 #ifndef UTFRAMEWORK_H
 #define UTFRAMEWORK_H
 
-#include <cstring>
 #include <string>
 #include <sstream>
 #include <signal.h>
+#include <iostream>
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
 	// Windows
-	//#include <WinBase.h>
 	#include <Windows.h>
 	#include <iostream>
+
 #else
 	// Linux
-	#include <unistd.h>
-	#include <stdio.h>
 	#include <stdlib.h>
-	#include <pthread.h>
-	#include <iostream>
-	#include <sys/time.h>
-	#include <sys/select.h>
 #endif
-
-#define RUN_TIMEOUE 5000
 
 using namespace std;
 
 namespace Thilenius
 {
 	enum ConsoleColor { White, Red, Yellow, Green, Blue };
-	enum RunningMode { Normal, RetroMode };
+
 	//===========================================================================================
 	//==========================    Testing Framework Class Definition   ========================
 	//===========================================================================================
@@ -77,11 +94,8 @@ namespace Thilenius
 		static void Fail ( std::string name, std::string message );
 
 		static void SegFaultRecovery ( );
-		static void FaultException ( const std::exception& exeption );
+		static void FaultException ( std::exception exeption );
 		static void UnknownExHandler ( );
-		static void TimeoutFault ( );
-		
-		static void SetMode( RunningMode mode );
 
 		static bool IsTesting ( );
 		static void SetColor ( ConsoleColor color );
@@ -106,21 +120,9 @@ namespace Thilenius
 
 		static int m_maxDepth;
 		static int m_currentDepth;
+		static int m_retroMode;
 
-		static RunningMode m_mode;
 	};
-	
-	
-	//===========================================================================================
-	//===============================  Free Function  Definitions  ==============================
-	//===========================================================================================
-	extern void(*TestingFunction)( );
-	extern bool isThreadFinished;
-	
-	void PosixSegFault(int signum);
-	unsigned int get_ticks( );
-	void* PosixThreadFork ( void* );
-	void ForkThread ( );
 
 	//===========================================================================================
 	//===============================     Macro Debug Directives   ==============================
@@ -147,48 +149,56 @@ namespace Thilenius
 	//===========================================================================================
 	
 	// See UTFramework.cpp for a full expansion.
-#define SUITE_BEGIN(SuiteName) \
-	void(*Thilenius::TestingFunction)( );\
+#define SUITE_BEGIN(SuiteName)			\
 	void UTRunAll () \
 	{ \
-	Thilenius::UTFramework::StartSuite( SuiteName ); \
+	  UTFramework::StartSuite( SuiteName );	\
 	if ( false ){ } \
 
 #define SUITE_END \
 		else \
 	{ \
-	Thilenius::UTFramework::EndSuite(); \
+	UTFramework::EndSuite(); \
 	} \
+	} \
+	void PosixSegFault(int signum) \
+	{ \
+	if ( UTFramework::IsTesting ( ) ) \
+	{ \
+	signal(SIGSEGV, PosixSegFault); \
+	UTFramework::SegFaultRecovery(); \
+	UTRunAll(); \
+	} \
+	signal(signum, SIG_DFL); \
+	exit(3); \
 	} \
 
 #define TEST_BEGIN(TestName) \
-	else if ( Thilenius::UTFramework::StartTest ( TestName ) ) \
+	else if ( UTFramework::StartTest ( TestName ) ) \
 	{ \
 	try \
 	{ \
 
 #define TEST_END \
 	} \
-	catch (const std::exception& ex) { Thilenius::UTFramework::FaultException(ex); } \
-	catch (...) { Thilenius::UTFramework::UnknownExHandler(); } \
-	Thilenius::UTFramework::EndTest(); \
-	Thilenius::TestingFunction(); \
+	catch (const std::exception& ex) { UTFramework::FaultException(ex); } \
+	catch (...) { UTFramework::UnknownExHandler(); } \
+	UTFramework::EndTest(); \
+	UTRunAll (); \
 	} \
 
-#define UTFrameworkInit \
-	if (argc == 2 && strcmp(argv[1], "--retrograde") == 0) \
-		UTFramework::SetMode(RetroMode); \
-	TestingFunction = &UTRunAll; \
-	ForkThread( ); \
+#define UTFrameworkInit	\
+	signal(SIGSEGV, PosixSegFault); \
+	UTRunAll(); \
 
 	inline void IsTrue ( std::string testName, bool result, std::string message )
 	{
-		Thilenius::UTFramework::IsTrue(testName, result, message);
+		UTFramework::IsTrue(testName, result, message);
 	}
 
 	inline void Error ( std::string testName, std::string message )
 	{
-		Thilenius::UTFramework::Fail(testName, message);
+		UTFramework::Fail(testName, message);
 	}
 
 }
