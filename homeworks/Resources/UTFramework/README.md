@@ -7,6 +7,10 @@ Version: *1.2.2*
 
 A simple unit testing framework designed to be bundled with homework assignments. The Framework is also being used as a back end driver for RetroGrade, the online grading system create by Gabe. These files will be updated when a new release has been tested and stabilize.
 
+Building
+-------
+To build the demo Main.cpp, simply pull all the files ( Main.cpp, UTFramework.cpp, UTFramework.h, makefile ) and use the provided make file. Give the test a few seconds to run, the infinite loop will be terminated after a few seconds if you are on a Linux machine.
+
 Support
 -------
 
