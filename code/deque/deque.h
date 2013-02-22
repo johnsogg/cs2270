@@ -35,4 +35,4 @@ int peek_front ( deque* &queue );
 
 int size ( deque* &queue );
 
-boolean contains (deque* &queue, int val);
+bool contains (deque* &queue, int val);
