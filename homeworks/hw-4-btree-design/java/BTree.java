@@ -115,7 +115,7 @@ public abstract class BTree {
      * not in the btree this should do nothing.
      *
      * On exit:
-     * -- the 'root' pointer should refer to the root of the
+     * -- the 'root' member should refer to the root of the
      *    tree. (the root may change when we insert or delete)
      * -- the btree pointed to by 'root' is valid.
      **/
