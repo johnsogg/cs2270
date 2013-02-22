@@ -4,15 +4,15 @@ public class BTreeImpl extends BTree {
 	super(order);
     }
 
-    public void insert(BTreeRoot root, int key) {
+    public void insert(int key) {
 
     }
 
-    public void remove(BTreeRoot root, int key) {
+    public void remove(int key) {
 
     }
 
-    public boolean contains(BTreeRoot root, int key) {
+    public boolean contains(int key) {
 	return false;
     }
 
