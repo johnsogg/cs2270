@@ -8,6 +8,9 @@
 //-------------------------------------------------------------------------------------
 // V 1.2.2
 
+// IMPORTANT: You MUST specify -pthread at the end of flags in makefile to compile
+// 	      the UTFramework on Linux!
+
 // Abstract:
 // A simple unit testing framework designed to be bundled with homework assignments.
 // The framework itself (UTFramework.h and UTFramework.cpp) should not be edited by
