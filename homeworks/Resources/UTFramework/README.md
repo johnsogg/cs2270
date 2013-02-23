@@ -7,13 +7,15 @@ Version: *1.2.2*
 
 A simple unit testing framework designed to be bundled with homework assignments. The Framework is also being used as a back end driver for RetroGrade, the online grading system create by Gabe. These files will be updated when a new release has been tested and stabilize.
 
+Important!
+-------
+If you use a makefile from a previous assignment, or you make your own, you MUST add -pthread to the end of the flags:
+
+CXXFLAGS = -g -Wall -Wextra -Wno-write-strings2 -pthread
+
 Building
 -------
 To build the demo Main.cpp, simply pull all the files ( Main.cpp, UTFramework.cpp, UTFramework.h, makefile ) and use the provided make file. Give the test a few seconds to run, the infinite loop will be terminated after a few seconds if you are on a Linux machine.
-
-A previos make file can be used but you will need to manually add -pthead to the end of the flags:
-
-CXXFLAGS = -g -Wall -Wextra -Wno-write-strings2 -pthread
 
 Support
 -------
