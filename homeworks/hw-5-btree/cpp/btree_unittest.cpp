@@ -140,6 +140,31 @@ TEST_BEGIN("Remove1")
   check_invariants(invar, root, true);
   IsTrue("Check Empty", !any_false(invar), "Default Full Leaf Root Breaks Invariant");
 
+  remove(root, 20);
+  check_invariants(invar, root, true);
+  IsTrue("Invariant Check", !any_false(invar), "Invariants Broken");
+  bool ok = !private_contains(root, 20);
+  IsTrue("Contains Check", ok, "Tree still contains key that was just removed");
+
+  remove(root, 10);
+  check_invariants(invar, root, true);
+  IsTrue("Invariant Check", !any_false(invar), "Invariants Broken");
+  ok = !private_contains(root, 10);
+  IsTrue("Contains Check", ok, "Tree still contains key that was just removed");
+
+  remove(root, 40);
+  check_invariants(invar, root, true);
+  IsTrue("Invariant Check", !any_false(invar), "Invariants Broken");
+  ok = !private_contains(root, 40);
+  IsTrue("Contains Check", ok, "Tree still contains key that was just removed");
+
+  remove(root, 30);
+  check_invariants(invar, root, true);
+  IsTrue("Invariant Check", !any_false(invar), "Invariants Broken");
+  ok = !private_contains(root, 30);
+  IsTrue("Contains Check", ok, "Tree still contains key that was just removed");
+
+
   // IsTrue("AssertionName", true, "Error Message");
 }TEST_END
 
