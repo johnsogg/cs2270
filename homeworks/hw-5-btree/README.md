@@ -54,7 +54,7 @@ __insert (3)__: _Insert into a multi-layer tree until it splits but
 does not need to add height._ 3 points
 
 __insert (4)__: _Insert into a multi-layer tree until it splits and
-causes the height to increase._ 4 points
+causes the height to increase._ 3 points
 
 __remove (1)__: _Remove a key from a full leaf_: 3 points
 
@@ -63,9 +63,13 @@ __remove (2)__: _Remove a key from a full non-leaf node_: 3 points
 __remove (3)__: _Remove a key from a thin node that can borrow from a
 full sibling_: 3 points
 
-__remove (4)__: _Remove a key from a thin node with thin siblings_: 4
+__remove (4)__: _Remove a key from a thin node with thin siblings_: 3
 points
 
+In addition to the above checks, there will also be a final test:
+
+__bulk random__: _Handle many insertions and removals of randomly
+chosen integers_: 2 points
 
 
 What to Write and Turn In

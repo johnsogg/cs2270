@@ -1,0 +1,11 @@
+graph btree {
+    BT_7ffaabc03a50 [label="10 20 30"];
+    BT_7ffaabc03aa0 [label="5 8"];
+    BT_7ffaabc03a50 -- BT_7ffaabc03aa0;
+    BT_7ffaabc03af0 [label="13 15 17 19"];
+    BT_7ffaabc03a50 -- BT_7ffaabc03af0;
+    BT_7ffaabc03b40 [label="23 27"];
+    BT_7ffaabc03a50 -- BT_7ffaabc03b40;
+    BT_7ffaabc03b90 [label="33 35 38"];
+    BT_7ffaabc03a50 -- BT_7ffaabc03b90;
+}
