@@ -35,7 +35,7 @@ For this assignment we will adhere to the following invariants:
 1. A node's keys are kept in ascending order, starting at index 0.
 2. A node may have at most `m` children.
 3. Index nodes have at least `round_up(m/2)` children. _By inference
-this means index nodes have at least `round_up(m/2)-1` keys._
+   this means index nodes have at least `round_up(m/2)-1` keys._
 4. If the root is not a leaf, it has at least two children.
 5. All leaves are at the same level.
 6. Non-leaf nodes with `k` children contain `k−1` keys.
@@ -43,6 +43,8 @@ this means index nodes have at least `round_up(m/2)-1` keys._
    `key[i]`. The node pointed to by the final child pointer holds keys
    that are larger than the final key.
 8. Leaves must have at least `round_up(m/2) - 1` keys.
+9. The node's `num_keys` and `is_leaf` members accurately describe the
+   number of keys and if the node is a leaf or not.
 
 The `round_up` function is equivalent to the C++ `ceil` function: it
 gives you the smallest integer that is equal to or greater than the
