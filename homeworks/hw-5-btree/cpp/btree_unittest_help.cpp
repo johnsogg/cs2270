@@ -77,7 +77,7 @@ btree* build_two_tier() {
   root->children[3] = ch4;
   root->is_leaf = false;
   root->num_keys = 3;
-  // print_tree(root);
+  print_tree(root);
   return root;
 }
 

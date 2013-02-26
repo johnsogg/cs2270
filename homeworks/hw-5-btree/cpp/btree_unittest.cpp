@@ -275,6 +275,5 @@ vector<int> get_random_data(int how_many, int upper_bound) {
 int main (int argc, char* argv[])
 {	
 	UTFrameworkInit;
-	//	build_full_two_tier();
-	
+	build_full_two_tier();
 }
