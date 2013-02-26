@@ -7,24 +7,24 @@
  */
 struct invariants {
   // A node's keys are kept in ascending order, starting at index 0.
-  bool ascending = false;
+  bool ascending;
 
   // A node may have at most m children.
-  bool not_fat = false;
+  bool not_fat;
 
   // Non-root nodes have at least round_up(m/2) - 1 keys
-  bool not_starving = false;
+  bool not_starving;
 
   // If the root is not a leaf, it has at least two children.
-  bool good_root = false;
+  bool good_root;
 
   // All leaves are at the same level. Only need to check this if you
   // are running the invariant tests on the root of the entire tree.
-  bool height_match = false;
+  bool height_match;
 
   // child[i] holds keys that are less than key[i]. The final child
   // holds keys that are larger than the final key.
-  bool child_key_order = false;
+  bool child_key_order;
   
 };
 
