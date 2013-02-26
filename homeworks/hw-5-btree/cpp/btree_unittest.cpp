@@ -25,6 +25,8 @@ TEST_BEGIN("SmallTree")
     IsTrue("Child underfull", root->children[i]->num_keys >= min_keys, "Child is underfull");
     IsTrue("Child overfull", root->children[i]->num_keys < BTREE_ORDER, "Child is overfull");
   }
+  cout << "You will want to comment this out. Just showing you how" << endl
+       << "to use the dotfile stuff. See dotfile.cpp for details." << endl;
   print_tree(root);
 }TEST_END
 
