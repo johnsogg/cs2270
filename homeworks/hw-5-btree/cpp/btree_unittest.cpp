@@ -9,47 +9,6 @@ bool passed_remove4 = false;
 
 SUITE_BEGIN("BTree")
 
-// TEST_BEGIN("SanityCheck")
-// {
-//   btree* root = build_empty();
-//   IsTrue("Null Root?", root != NULL, "Root is NULL");
-//   IsTrue("Leaf Root?", root->is_leaf, "Root is not a leaf");
-//   IsTrue("Empty Root?", root->num_keys == 0, "Root has too many keys");
-
-// }TEST_END
-
-// TEST_BEGIN("SmallTree")
-// {
-//   btree* root = build_small();
-//   int min_keys = BTREE_ORDER / 2;
-//   IsTrue("2 keys", root->num_keys == 2, "Should have 2 keys");
-//   for (int i=0; i <= 2; i++) {
-//     IsTrue("Child not null", root->children[i] != NULL, "Child is null!");
-//     IsTrue("Child is leaf", root->children[i]->is_leaf, "Child should be a leaf");
-//     IsTrue("Child underfull", root->children[i]->num_keys >= min_keys, "Child is underfull");
-//     IsTrue("Child overfull", root->children[i]->num_keys < BTREE_ORDER, "Child is overfull");
-//   }
-//   IsTrue("Look for known values", private_contains(root, 20), "Tree must contain 20");
-//   IsTrue("Look for known values", private_contains(root, 2), "Tree must contain 2");
-//   IsTrue("Look for known values", private_contains(root, 28), "Tree must contain 28");
-//   IsTrue("Avoid wrong values", !private_contains(root, 30), "Tree must not contain 30");
-//   IsTrue("Avoid wrong values", !private_contains(root, 14), "Tree must not contain 14");
-// }TEST_END
-
-
-// TEST_BEGIN("SmallTreeInvariants")
-// {
-//   btree* root = build_small();
-//   invariants* invar = new invariants;
-//   check_invariants(invar, root, true);
-//   IsTrue("Ascending Keys", invar->ascending, "Keys are not in ascending order");
-//   IsTrue("Not Fat", invar->not_fat, "Too many keys in node");
-//   IsTrue("Not Starving", invar->not_starving, "Too few keys in non-root node");
-//   IsTrue("Height Match", invar->height_match, "Leaves not all on same level");
-//   IsTrue("Tree Key Order", invar->child_key_order, "Keys are not in sort order among all nodes");
-
-// }TEST_END
-
 TEST_BEGIN("Insert1")
 {
   btree* root = build_empty();
@@ -271,9 +230,37 @@ vector<int> get_random_data(int how_many, int upper_bound) {
   return numbers;
 }
 
+void print_trees() {
+  cout << "Tree 'empty' used in tests Insert1 and BulkRandom" << endl << endl;
+  btree* root = build_empty();
+  print_tree(root);
+  cout << endl;
 
-int main (int argc, char* argv[])
-{	
-	UTFrameworkInit;
-	build_full_two_tier();
+  cout << "Tree 'full_leaf_root' used in tests Insert2 and Remove1 " << endl << endl;
+  root = build_full_leaf_root();
+  print_tree(root);
+  cout << endl;
+
+  cout << "Tree 'two_tier' used in tests Insert3 and Remove2 " << endl << endl;
+  root = build_two_tier();
+  print_tree(root);
+  cout << endl;
+
+  cout << "Tree 'full_two_tier' used in tests Insert4 and Remove3" << endl << endl;
+  root = build_full_two_tier();
+  print_tree(root);
+  cout << endl;
+}
+
+int main (int argc, char* argv[]) {	
+  if (argc == 2 && strcmp(argv[1], "--print-trees") == 0) {
+    print_trees();
+    return 0;
+  } else if (argc != 1) { 
+    cout << " Usage: " << argv[0] << " [--print-trees]" << endl;
+    return -1;
+  } else {
+    UTFrameworkInit;
+  }
+  
 }

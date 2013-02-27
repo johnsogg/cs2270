@@ -22,6 +22,39 @@ D. P. Mehta, S. Sahni (editors), Chapman & Hall/CRC, ISBN
 There is also a section in the Shaffer book but it is short and
 cryptic.
 
+Using the Driver
+--------
+
+I've provided a driver for the C++ version. It only tests the
+invariants and if your code works from a high level. You will need to
+write your own tests for things like splitting and combining nodes.
+
+You can generate a `dot` graph of an arbitrary b-tree using
+`print_tree(btree*)` that is found in `btree_unittest_help.cpp`. Just
+copy/paste and save the `graph { .. }` text to a file and open it
+using something that can read `dot` files, like _GraphViz_.
+
+Here are the trees used in the unit tests:
+
+Empty Tree used in Insert1 and BulkRandom:
+
+![Empty Tree](https://raw.github.com/johnsogg/cs2270/master/homeworks/hw-5-btree/graph-empty.png)
+
+Full Leaf Root used in Insert2 and Remove1:
+
+![Full Leaf Root](https://raw.github.com/johnsogg/cs2270/master/homeworks/hw-5-btree/graph-full-leaf-root.png)
+
+Two Tier used in Insert3 and Remove2:
+
+![Two Tier](https://raw.github.com/johnsogg/cs2270/master/homeworks/hw-5-btree/graph-two-tier.png)
+
+Full Two Tier used in Insert4 and Remove3:
+
+![Full Two Tier](https://raw.github.com/johnsogg/cs2270/master/homeworks/hw-5-btree/graph-full-two-tier.png)
+
+If you want you can execute the driver with the `--print-trees` flag
+to generate the dot output on your own machine.
+
 Grading
 -------
 
