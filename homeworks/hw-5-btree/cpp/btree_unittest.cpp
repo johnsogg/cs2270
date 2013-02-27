@@ -129,7 +129,7 @@ TEST_BEGIN("Insert4")
   IsTrue("Insertion Invariant Check", !any_false(invar), "Inserting Key Breaks Invariant(s)");
   IsTrue("Contains Check", private_contains(root, 19), "Tree does not contain key just inserted");
   int height_after = 0;
-  check_height(root, height_before);
+  check_height(root, height_after);
   IsTrue("Height Changed?", height_before + 1 == height_after, "Tree did not grow height by one.");
 }TEST_END
 
