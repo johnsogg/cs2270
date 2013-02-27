@@ -250,6 +250,12 @@ void print_trees() {
   root = build_full_two_tier();
   print_tree(root);
   cout << endl;
+
+  cout << "Tree 'thin_three_tier' used in test Remove4" << endl << endl;
+  root = build_thin_three_tier();
+  print_tree(root);
+  cout << endl;
+
 }
 
 int main (int argc, char* argv[]) {	

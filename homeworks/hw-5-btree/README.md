@@ -52,6 +52,10 @@ Full Two Tier used in Insert4 and Remove3:
 
 ![Full Two Tier](https://raw.github.com/johnsogg/cs2270/master/homeworks/hw-5-btree/graph-full-two-tier.png)
 
+Thin Three Tier used in Remove4:
+
+![Thin Three Tier](https://raw.github.com/johnsogg/cs2270/master/homeworks/hw-5-btree/graph-thin-three-tier.png)
+
 If you want you can execute the driver with the `--print-trees` flag
 to generate the dot output on your own machine.
 
