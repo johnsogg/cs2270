@@ -223,59 +223,67 @@ void print_tree(btree* &root) {
 
 void check_invariants(invariants* &invars, btree* &node, bool is_root) {
 
-  // A node's keys are kept in ascending order, starting at index 0.
-  invars->ascending = true;
-  int prev = INT_MIN;
-  for (int i=0; i < node->num_keys; i++) {
-    if (node->keys[i] <= prev) {
-      invars->ascending = false;
-      break;
-    }
-  }
-
-  // A node may have at most m children.
-  invars->not_fat = node->num_keys < BTREE_ORDER;
-
-  // Non-root nodes have at least round_up(m/2) - 1 keys
-  int min_keys = (int) ceil(BTREE_ORDER/2.0) - 1;
-  invars->not_starving = is_root;
-  if (!is_root) {
-    invars->not_starving = node->num_keys >= min_keys;
-  }
-
-  // If the root is not a leaf, it has at least two children.
-  invars->good_root = true;
-  if (is_root && !node->is_leaf) {
-    invars->good_root = node->num_keys >= 1;
-  }
-
-  // All leaves are at the same level. Only need to check this if you
-  // are running the invariant tests on the root of the entire tree.
-  invars->height_match = true;
-  if (is_root) {
-    int res = 0;
-    invars->height_match = check_height(node, res);
-  }
-  
-  // child[i] holds keys that are less than key[i]. The final child
-  // holds keys that are larger than the final key.
-  //  child_key_order = false;
-  invars->child_key_order = true;
-  if (is_root && !node->is_leaf) {
-    invars->child_key_order = check_node_key_range(node, INT_MIN, INT_MAX, true);
-  }
-
-  if (any_false(invars)) {
-    return;
-  } else if (!node->is_leaf) {
-    for (int i=0; i <= node->num_keys; i++) {
-      check_invariants(invars, node->children[i], false);
-      if(any_false(invars)) {
-	return;
+  if (is_root && node == NULL) {
+    invars->ascending = true;
+    invars->not_fat = true;
+    invars->not_starving = true;
+    invars->good_root = true;
+    invars->height_match = true;
+    invars->child_key_order = true;
+  } else {
+    // A node's keys are kept in ascending order, starting at index 0.
+    invars->ascending = true;
+    int prev = INT_MIN;
+    for (int i=0; i < node->num_keys; i++) {
+      if (node->keys[i] <= prev) {
+	invars->ascending = false;
+	break;
       }
     }
-  }
+
+    // A node may have at most m children.
+    invars->not_fat = node->num_keys < BTREE_ORDER;
+
+    // Non-root nodes have at least round_up(m/2) - 1 keys
+    int min_keys = (int) ceil(BTREE_ORDER/2.0) - 1;
+    invars->not_starving = is_root;
+    if (!is_root) {
+      invars->not_starving = node->num_keys >= min_keys;
+    }
+
+    // If the root is not a leaf, it has at least two children.
+    invars->good_root = true;
+    if (is_root && !node->is_leaf) {
+      invars->good_root = node->num_keys >= 1;
+    }
+
+    // All leaves are at the same level. Only need to check this if you
+    // are running the invariant tests on the root of the entire tree.
+    invars->height_match = true;
+    if (is_root) {
+      int res = 0;
+      invars->height_match = check_height(node, res);
+    }
   
+    // child[i] holds keys that are less than key[i]. The final child
+    // holds keys that are larger than the final key.
+    //  child_key_order = false;
+    invars->child_key_order = true;
+    if (is_root && !node->is_leaf) {
+      invars->child_key_order = check_node_key_range(node, INT_MIN, INT_MAX, true);
+    }
+
+    if (any_false(invars)) {
+      return;
+    } else if (!node->is_leaf) {
+      for (int i=0; i <= node->num_keys; i++) {
+	check_invariants(invars, node->children[i], false);
+	if(any_false(invars)) {
+	  return;
+	}
+      }
+    }
+  }  
 }
 
 
