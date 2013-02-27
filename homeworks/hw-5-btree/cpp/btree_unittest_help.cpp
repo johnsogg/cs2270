@@ -77,7 +77,6 @@ btree* build_two_tier() {
   root->children[3] = ch4;
   root->is_leaf = false;
   root->num_keys = 3;
-  print_tree(root);
   return root;
 }
 
@@ -107,8 +106,6 @@ btree* build_full_two_tier() {
   root->children[4] = ch4;
   root->is_leaf = false;
   root->num_keys = 4;
-  
-  //  print_tree(root);
   return root;
 }
 
@@ -154,7 +151,6 @@ btree* build_thin_three_tier() {
   ch1->children[1] = r1;
   ch1->children[2] = r2;
 
-  //print_tree(root);
   return root;
 }
 
