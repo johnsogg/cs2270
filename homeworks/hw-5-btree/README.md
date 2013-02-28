@@ -141,9 +141,9 @@ insert/remove operation. I suggest you take a look at the
 use that code as you test.
 
 You will need to write many functions that are not specified in the
-header file. You may write a separate header file and (next week)
-submit it along with your implementation file. Just be sure you
-`#include` it in your implementation file.
+header file. You may write a separate header file and submit it along
+with your implementation file. Just be sure you `#include` it in your
+implementation file.
 
 
 

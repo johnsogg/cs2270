@@ -9,6 +9,26 @@ bool passed_remove4 = false;
 
 SUITE_BEGIN("BTree")
 
+TEST_BEGIN("Contains")
+{
+  btree* root_empty = build_empty();
+  btree* root_full_leaf = build_full_leaf_root(); // 10, 20, 30, 40
+  btree* root_two_tier = build_two_tier(); // 5 8 10 13 15 17 19 20 23 27 30 33 35 38
+  IsTrue("Contains", !contains(root_empty, 42), "Empty tree shouldn't have anything");
+  IsTrue("Contains", contains(root_full_leaf, 10), "Key not found");
+  IsTrue("Contains", contains(root_full_leaf, 20), "Key not found");
+  IsTrue("Contains", !contains(root_full_leaf, 15), "Key should not be found");
+  IsTrue("Contains", !contains(root_full_leaf, 100), "Key should not be found");
+
+  IsTrue("Contains", !contains(root_two_tier, 18), "Key should not be found");
+  IsTrue("Contains", !contains(root_two_tier, 39), "Key should not be found");
+  IsTrue("Contains", contains(root_two_tier, 20), "Key not found");
+  IsTrue("Contains", contains(root_two_tier, 5), "Key not found");
+  IsTrue("Contains", contains(root_two_tier, 17), "Key not found");
+  IsTrue("Contains", contains(root_two_tier, 38), "Key not found");
+  
+}TEST_END
+
 TEST_BEGIN("Insert1")
 {
   // The tree starts with an empty (non-null) root. We will insert
@@ -235,8 +255,9 @@ TEST_BEGIN("Remove4")
   passed_remove4 = passed_remove4 && ok;
   int height_after = 0;
   check_height(root, height_after);
-  IsTrue("Height Same?", height_before == height_after - 1, "Height should reduce by one");
-  passed_remove4 = passed_remove4 && height_before == height_after - 1;
+  bool height_reduced = height_before == height_after + 1;
+  IsTrue("Height Same?", height_reduced, "Height should reduce by one");
+  passed_remove4 = passed_remove4 && height_reduced;
 }TEST_END
 
 
@@ -332,9 +353,6 @@ int main (int argc, char* argv[]) {
   if (argc == 2 && strcmp(argv[1], "--print-trees") == 0) {
     print_trees();
     return 0;
-  } else if (argc != 1) { 
-    cout << " Usage: " << argv[0] << " [--print-trees]" << endl;
-    return -1;
   } else {
     UTFrameworkInit;
   }
