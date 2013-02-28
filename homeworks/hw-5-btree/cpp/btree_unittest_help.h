@@ -52,6 +52,8 @@ void check_leaf_height(btree* &node, vector<int> &depth, int current_depth);
 
 bool check_height(btree* &node, int &result_height);
 
+void check_size(btree* &node, int &result_nodes, int &result_keys, bool is_root);
+
 bool check_node_key_range(btree* &node, int low, int high, bool recurse);
 
 bool any_false(invariants* &invars);

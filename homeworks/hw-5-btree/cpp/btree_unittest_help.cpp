@@ -314,9 +314,24 @@ bool check_height(btree* &node, int &result_height) {
   return same;
 }
 
+void check_size(btree* &node, int &result_nodes, int &result_keys, bool is_root) {
+  if (is_root) {
+    result_nodes = 0;
+    result_keys = 0;
+  }
+  if (node == NULL) {
+    return;
+  }
+  result_nodes++;
+  result_keys = result_keys + node->num_keys;
+  if (!node->is_leaf) {
+    for (int i=0; i <= node->num_keys; i++) {
+      check_size(node->children[i], result_nodes, result_keys, false);
+    }
+  }
+}
+
 bool check_node_key_range(btree* &node, int low, int high, bool recurse) {
-  int orig_low = low;
-  int orig_high = high;
 
   for (int i=0; i < node->num_keys; i++) {
     if (node->keys[i] <= low || // key is out of low range
@@ -369,4 +384,5 @@ bool private_contains(btree* &node, int key) {
   if (!node->is_leaf && node->keys[node->num_keys-1] < key) {
     return private_contains(node->children[node->num_keys], key);
   }
+  return false;
 }
