@@ -35,6 +35,16 @@ public abstract class BTree {
 	    children = new Node[order];
 	}
 
+	public Node(int order, int[] keys, boolean leaf) {
+	    numKeys = keys.length;
+	    this.keys = new int[order-1];
+	    for (int i=0; i < keys.length; i++) { 
+		this.keys[i] = keys[i];
+	    }
+	    isLeaf = leaf;
+	    children = new Node[order];
+	}
+
 	/**
 	 * Public accessor to get the number of valid keys. This implies
 	 * there are numKeys + 1 valid children unless this is a leaf.
