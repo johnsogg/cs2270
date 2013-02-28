@@ -355,6 +355,9 @@ bool any_false(invariants* &invars) {
 }
 
 bool private_contains(btree* &node, int key) {
+  if (node == NULL) {
+    return false;
+  }
   for (int i=0; i < node->num_keys; i++) {
     if (node->keys[i] == key) {
       return true;
