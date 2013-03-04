@@ -36,6 +36,10 @@ int get_smaller(int a, int b) {
   return b;
 }
 
+int compare_with_func_pointer(int a, int b, int (*comparator) (int, int)) {
+  return comparator(a, b);
+}
+
 int main() {
   cout << "Hello!" << endl;
   int (*func) () = first_thing;
@@ -86,6 +90,15 @@ int main() {
   whatever = get_larger;
   int large = whatever(50, 3);
   cout << "The larger of 50, 3 is: " << large << endl;
+
+  // we can pass function pointers like normal parameters (because
+  // they *are* normal parameters, they are just of a weird type you
+  // don't usually see).
+  cout << "Now lets compare 20 and 30 with larger then smaller func pointers." << endl;
+  large = compare_with_func_pointer(30, 20, get_larger);
+  cout << "(1) Using a function pointer as a param, we get: " << large << endl;
+  small = compare_with_func_pointer(30, 20, get_smaller);
+  cout << "(2) Using a function pointer as a param, we get: " << small << endl;
   
   return 0;
 }
