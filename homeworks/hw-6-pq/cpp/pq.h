@@ -6,6 +6,8 @@
 
 using namespace std;
 
+pq* init_priority_queue();
+
 void insert(pq* &queue, string &text, float priority);
 
 string remove(pq* &queue);

@@ -16,6 +16,27 @@
 #include "pq.h"
 
 /**
+ * Initialize an empty priority queue.
+ *
+ * This is needed for unit testing. I'll do something like this:
+ *
+ *   pq* queue = init_priority_queue();
+ *   string text = "Speaker of the House";
+ *   insert(queue,  text, 7.9);
+ *   text = "President";
+ *   insert(queue, text, 10.0);
+ *   text = "Congressional Staffer";
+ *   insert(queue, text, 2.0);
+ *   cout << remove(queue) << endl; // President
+ *   cout << remove(queue) << endl; // Speaker of the House
+ *   cout << remove(queue) << endl; // Congressional Staffer
+ *
+ **/
+pq* init_priority_queue() {
+  // implement me
+}
+
+/**
  * Insert the given text information into the queue with the specified
  * priority.
  *
