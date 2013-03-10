@@ -11,7 +11,11 @@ MANUAL_DRIVER	 	= huffman
 FRAMEWORK_TARGETS	= UTFramework.o
 
 USER_DIR = .
-CPPFLAGS += -pthread -g -Wall -Wextra -std=c++0x
+CPPFLAGS += -pthread \
+	-g \
+	-std=c++0x \
+	-Wreturn-type \
+	-Wunused-variable
 
 # House-keeping build targets.
 
@@ -26,6 +30,10 @@ UTFramework.o: $(USER_DIR)/UTFramework.cpp	\
                  $(USER_DIR)/UTFramework.h
 	$(CXX) $(CPPFLAGS) -c $(USER_DIR)/UTFramework.cpp
 
+huffman_help.o: $(USER_DIR)/huffman_help.cpp	\
+                 $(USER_DIR)/huffman.h
+	$(CXX) $(CPPFLAGS) -c $(USER_DIR)/huffman_help.cpp
+
 $(STUDENT_OBJ_FILE): $(USER_DIR)/$(STUDENT_IMPL_FILE) \
                 $(USER_DIR)/$(PRIMARY_HEADER_FILE) \
                 $(FRAMEWORK_TARGETS)
@@ -37,8 +45,8 @@ $(UNIT_TEST_OBJ_FILE) : $(USER_DIR)/$(UNIT_TEST_IMPL_FILE) \
 	$(CXX) $(CPPFLAGS) -c $(USER_DIR)/$(UNIT_TEST_IMPL_FILE)
 
 $(UNIT_TEST_BINARY) : $(STUDENT_OBJ_FILE) $(UNIT_TEST_OBJ_FILE) \
-		   $(FRAMEWORK_TARGETS)
+		   $(FRAMEWORK_TARGETS) huffman_help.o
 	$(CXX) $(CPPFLAGS) $^ -o $@
 
-$(MANUAL_DRIVER): $(STUDENT_OBJ_FILE)
+$(MANUAL_DRIVER): $(STUDENT_OBJ_FILE) huffman_help.o
 	$(CXX) $(CPPFLAGS) $^ -o $@
