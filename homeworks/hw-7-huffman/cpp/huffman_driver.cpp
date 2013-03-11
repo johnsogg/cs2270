@@ -9,6 +9,8 @@
  * UTFrameworkInit is not commented out.
  */
 #include <iostream>
+#include <cmath>
+#define EPSILON 0.0001
 #include "UTFramework.h"
 #include "huffman.h"
 
@@ -19,6 +21,7 @@ bool checkTree(freq_info*& node);
 freq_info* combine(freq_info*& left, freq_info*& right);
 freq_info* build_prefab_tree();
 map<char, string> build_prefab_map();
+bool are_same(float a, float b);
 
 SUITE_BEGIN("Huffman")
 
@@ -28,7 +31,7 @@ TEST_BEGIN("HuffTreeSupernode")
   freq_info* childB = init_freq_info_leaf('b', 0.4);
   freq_info* parent = init_freq_info_supernode(childA, childB);
   IsTrue("Parent has sum of frequencies?",
-	 parent->freq == childA->freq + childB->freq,
+	 are_same(parent->freq, childA->freq + childB->freq),
 	 "Parent does not have sum of frequences.");
   IsTrue("Parent has child links for left and right?",
 	 parent->left == childA &&
@@ -67,7 +70,7 @@ TEST_BEGIN("HuffTable")
   IsTrue("Spot Check", table['t'] == exp, "Wrong bitstring");
   exp = "^^..^";
   IsTrue("Spot Check", table['l'] == exp, "Wrong bitstring");
-	 
+  
 }TEST_END
 
 TEST_BEGIN("Encode")
@@ -205,4 +208,8 @@ map<char, string> build_prefab_map() {
   ret['m'] = ".^^^";
   ret['t'] = ".^^.";
   return ret;
+}
+
+bool are_same(float a, float b) {
+    return fabs(a - b) < EPSILON;
 }
