@@ -28,7 +28,7 @@ LinkedList::LinkedList() {
   root = NULL;
 }
 
-string LinkedList::report() {
+const string LinkedList::report() {
   stringstream ss;
   if (root != NULL) {
     ss << "[ ";

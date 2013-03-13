@@ -6,8 +6,8 @@
 class LinkedListNode {
 public:
   LinkedListNode(int data);
-  LinkedListNode();
-  ~LinkedListNode();
+  LinkedListNode(); // constructor
+  ~LinkedListNode(); // destructor
   int value;
   LinkedListNode* next;
 };
@@ -28,7 +28,7 @@ public:
   
   LinkedList();
 
-  std::string report();
+  const std::string report();
 
   void append(int data);
   
