@@ -11,3 +11,5 @@ implementations.
 
 Be careful when deciding which additional algorithm to implement. Some
 of them are really tricky. 
+
+![http://xkcd.com/1185/](http://imgs.xkcd.com/comics/ineffective_sorts.png)
