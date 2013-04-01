@@ -123,6 +123,9 @@ public:
   ~Node();
   string getData();
   void setData(string s);
+
+  void setRank(int rank);
+
   friend std::ostream &operator << (std::ostream& out, Node node);
 
   // methods to implement:

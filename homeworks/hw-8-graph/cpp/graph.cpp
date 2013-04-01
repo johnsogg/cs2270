@@ -122,6 +122,10 @@ Node::~Node() {
   // left out of the header/impl file entirely.
 }
 
+void Node::setRank(int r) {
+  rank = r;
+}
+
 void Node::clear() {
   // implement me.
 }
