@@ -49,6 +49,8 @@ Space/Time Coordinates for Main Lecture
 Where: Ramaley C250
 When: M-W-F 11:00--11:50am
 
+**Final Exam**: May 8, 1:30--4:00pm Ramaley C250 (same as classroom)
+
 Course Purpose 
 =======
 
