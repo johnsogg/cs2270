@@ -13,7 +13,7 @@
 #include <iostream>
 #include <string>
 #include <set>
-#include "Graph.hpp"
+#include "graph.hpp"
 
 using namespace std;
 

@@ -24,7 +24,7 @@
 
  */
 #include "UTFramework.h"
-#include "Graph.hpp"
+#include "graph.hpp"
 
 using namespace Thilenius;
 using namespace std;
