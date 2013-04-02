@@ -174,9 +174,8 @@ TEST_BEGIN("Clear")
   int finish_time;
   int bfs_rank;
   bool bad = false;
-  for (vector<Node*>::iterator it = graph.getNodes().begin();
-       it != graph.getNodes().end(); it++) {
-    Node* n = *it;
+  for (size_t i = 0; i < graph.getNodes().size(); i++) {
+    Node* n = graph.getNodes()[i];
     if (n == NULL) {
       IsTrue("Not Null", n != NULL, "Node is null");
     } else {
@@ -198,9 +197,8 @@ TEST_BEGIN("Clear")
     IsTrue("Nodes OK", true, "");
   }
   bad = false;
-  for (vector<Edge*>::iterator it = graph.getEdges().begin();
-       it != graph.getEdges().end(); it++) {
-    Edge* edge = *it;
+  for (size_t i=0; i < graph.getEdges().size(); i++) {
+    Edge* edge = graph.getEdges()[i];
     if (edge == NULL) {
       IsTrue("Not Null", edge != NULL, "Edge is null");
     } else {
@@ -263,9 +261,8 @@ TEST_BEGIN("DFS")
   a->getDiscoveryInformation(color, dt, ft, r);
   IsTrue("Color", color == BLACK, "Node A should be black");
   bool bad;
-  for (vector<Node*>::iterator it = graph.getNodes().begin();
-       it != graph.getNodes().end(); it++) {
-    Node* n = *it;
+  for (size_t i = 0; i < graph.getNodes().size(); i++) {
+    Node* n = graph.getNodes()[i];
     n->getDiscoveryInformation(color, dt, ft, r);
     bad = color != BLACK || dt < 0 || ft < 0;
     if (bad) {
