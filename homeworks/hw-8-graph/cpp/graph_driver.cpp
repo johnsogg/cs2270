@@ -128,9 +128,8 @@ Graph mkgraph2() {
 }
 
 Node* find(Graph& graph, string label) {
-  for (vector<Node*>::iterator it = graph.getNodes().begin();
-       it != graph.getNodes().end(); it++) {
-    Node* n = *it;
+  for (size_t i = 0; i < graph.getNodes().size(); i++) {                        
+    Node* n = graph.getNodes()[i];
     if (n->getData() == label) {
       return n;
     }
