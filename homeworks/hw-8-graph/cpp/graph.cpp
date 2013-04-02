@@ -34,6 +34,10 @@ vector<Edge*> Graph::getEdges() {
   return edges;
 }
 
+int Graph::getClock() {
+  return clock;
+}
+
 void Graph::addNode(Node& n) {
   nodes.push_back(&n);
 }
@@ -122,6 +126,10 @@ Node::~Node() {
   // left out of the header/impl file entirely.
 }
 
+string Node::getData() {
+  return data;
+}
+
 void Node::setRank(int r) {
   rank = r;
 }
@@ -137,6 +145,15 @@ void Node::setColor(int search_color, int time) {
 void Node::getDiscoveryInformation(int& color, int& disco_time, 
 				   int& finish_time, int& bfs_rank) {
   // implement me. 
+}
+
+bool Node::isAncestor(Node& other) {
+  // implement me.
+  return false;
+}
+
+void Node::setPredecessor(Node& other) {
+  // implement me.
 }
 
 Edge::Edge(Node& n1, Node& n2) {

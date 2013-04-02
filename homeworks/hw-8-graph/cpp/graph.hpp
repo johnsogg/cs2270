@@ -38,6 +38,7 @@ public:
   ~Graph();
   vector<Node*> getNodes();
   vector<Edge*> getEdges();
+  int getClock();
   void addNode(Node& n);
   void addEdge(Edge& e);
   void removeNode(Node& n);
@@ -118,6 +119,9 @@ private:
   int completion_time; // time step when node was completely finished
   int rank; // Number of steps from source node in a BFS. 0 means it
 	    // was the source node.
+  Node* predecessor; // Points to the predecessor node in the spanning
+		     // tree.
+
 public:
   Node(string s);
   ~Node();
@@ -131,8 +135,8 @@ public:
   // methods to implement:
   
   /**
-   * Set the color to WHITE and the discovery/finish time and rank to
-   * -1.
+   * Set the color to WHITE, the discovery/finish time and rank to -1,
+   * and sets the predecessor to NULL.
    **/
   void clear();
 
@@ -156,13 +160,29 @@ public:
   void getDiscoveryInformation(int& color, int& disco_time, 
 			       int& finish_time, int& bfs_rank);
 
+  /**
+   * Tells you if the given node is reachable by traversing this
+   * node's predecessor list. This is essentially like searching for
+   * an item in a linked list. You can do this iteratively (with a
+   * cursor) or recursively by calling isAncestor on non-null
+   * predecessors.
+   **/
+  bool isAncestor(Node& other);
+
+  /**
+   * Sets the predecessor node in the spanning tree. The predecessor
+   * node was the node that we were exploring when we first discovered
+   * a node (e.g. it was WHITE when we found it).
+   **/
+  void setPredecessor(Node& other);
+
 };
 
 class Edge {
 private:
   Node* a;
   Node* b;
-  int type; // one of the edge types defined in Graph.hpp
+  int type; // one of the edge types defined in graph.hpp
   float weight; // cost associated with this edge. default = 1
 public:
   Edge(Node& n1, Node& n2);
@@ -209,15 +229,28 @@ public:
   BACK: A back edge from C to A indicates that A was discovered before
   C, and C was discovered while A was still being explored.
 
-  FORWARD: A forward edge from A to C indicates that A is an ancestor
-  of C, and that C was not directly discovered from A.
+  FORWARD: A forward edge from A to C indicates that C was completely
+  examined when we found it, and A is an ancestor of C in the DFS
+  spanning tree.
 
-  CROSS: A cross edge from M to A indicates that A was completely
-  examined when we found that there's a link from some other node M to
-  A.
+  CROSS: A cross edge from A to C indicates the C was copmletely
+  examined when we found it, and A is NOT an ancestor of C in the DFS
+  spanning tree.
 
   These edge types are summarized graphically at
   http://en.wikipedia.org/wiki/Depth-first_search and does a much
   better job than words can do.
+
+  To determine edge types, you need to use both the discovery
+  information (the color of the ending node) and the predecessor
+  information (to distinguish between Cross and Forward edges).
+
+  Tree edges are when the end node is white.
+
+  Back edges are when the end node is gray.
+
+  Forward and cross edges are when the end node is black. If the start
+  node is an ancestor of the end node, it is a forward edge. Otherwise
+  it is a cross edge.
 
  */
