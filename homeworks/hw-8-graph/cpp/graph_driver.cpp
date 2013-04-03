@@ -346,19 +346,20 @@ TEST_BEGIN("BFS")
   Node* g = find(graph, "g");
   int color, dt, ft, rank;
   a->getDiscoveryInformation(color, dt, ft, rank);
-  IsTrue("Directed Rank A", rank == 1, "Incorrect :(");
+  IsTrue("Directed Rank A", rank == 1 || rank == 0, "Incorrect :(");
+  int base_rank = rank;
   b->getDiscoveryInformation(color, dt, ft, rank);
-  IsTrue("Directed Rank B", rank == 2, "Incorrect :(");
+  IsTrue("Directed Rank B", rank == base_rank + 1, "Incorrect :(");
   c->getDiscoveryInformation(color, dt, ft, rank);
-  IsTrue("Directed Rank C", rank == 2, "Incorrect :(");
+  IsTrue("Directed Rank C", rank == base_rank + 1, "Incorrect :(");
   d->getDiscoveryInformation(color, dt, ft, rank);
-  IsTrue("Directed Rank D", rank == 3, "Incorrect :(");
+  IsTrue("Directed Rank D", rank == base_rank + 2, "Incorrect :(");
   e->getDiscoveryInformation(color, dt, ft, rank);
-  IsTrue("Directed Rank E", rank == 2, "Incorrect :(");
+  IsTrue("Directed Rank E", rank == base_rank + 1, "Incorrect :(");
   f->getDiscoveryInformation(color, dt, ft, rank);
-  IsTrue("Directed Rank F", rank == 4, "Incorrect :(");
+  IsTrue("Directed Rank F", rank == base_rank + 3, "Incorrect :(");
   g->getDiscoveryInformation(color, dt, ft, rank);
-  IsTrue("Directed Rank G", rank == 3, "Incorrect :(");
+  IsTrue("Directed Rank G", rank == base_rank + 2, "Incorrect :(");
 }TEST_END
 
 TEST_BEGIN("BFSUndirected")
