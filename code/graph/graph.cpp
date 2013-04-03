@@ -91,7 +91,22 @@ set<Edge*> Graph::getAdjacentEdges(Node& n) {
 }
 
 void Graph::clear() {
-  // implement me
+  clock = 0;
+  // nodes is vector<Node*>
+  //  for (size_t i = 0; i < nodes.size(); i++) {
+  //    Node* n = nodes[i];
+  //  }
+  vector<Node*>::iterator it = nodes.begin();
+  for (;it != nodes.end(); it++) {
+    Node* n = *it;
+    n->clear();
+  }
+  vector<Edge*>::iterator eit = edges.begin();
+  for (;eit != edges.end(); eit++) {
+    Edge* e = *eit;
+    e->setType(UNDISCOVERED_EDGE);
+  }
+  
 }
 
 void Graph::tick(string message) {
@@ -134,8 +149,16 @@ void Node::setRank(int r) {
   rank = r;
 }
 
+/**
+ * Set the color to WHITE, the discovery/finish time and rank to -1,
+ * and sets the predecessor to NULL.
+ **/
 void Node::clear() {
-  // implement me.
+  this->color = WHITE;
+  this->discovery_time = -1;
+  this->completion_time = -1;
+  this->rank = -1;
+  this->predecessor = NULL;
 }
 
 void Node::setColor(int search_color, int time) {
@@ -144,7 +167,12 @@ void Node::setColor(int search_color, int time) {
 
 void Node::getDiscoveryInformation(int& color, int& disco_time, 
 				   int& finish_time, int& bfs_rank) {
-  // implement me. 
+  // color is the parameter
+  // this-> is the member variable
+  color = this->color;
+  disco_time = this->discovery_time; // this is not necessary :)
+  finish_time = completion_time;
+  bfs_rank = rank;
 }
 
 bool Node::isAncestor(Node& other) {
@@ -186,7 +214,7 @@ int Edge::getType() {
 }
 
 void Edge::setType(int edge_type) {
-  // implement me
+  type = edge_type;
 }
 
 string what(int& v) {
@@ -231,12 +259,12 @@ ostream &operator << (ostream& out, Graph graph) {
 }
 
 ostream &operator << (std::ostream& out, Node node) {
-  out << node.data;
+  out << node.data << " color: " << node.color << " dt/ft: " << node.discovery_time << "/" << node.completion_time;
   return out;
 }
 
 ostream &operator << (std::ostream& out, Edge edge) {
-  out << *edge.a << " -- " << *edge.b;
+  out << *edge.a << " -- " << *edge.b << " (" << edge.type << ")";
   return out;
 }
 

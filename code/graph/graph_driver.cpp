@@ -144,22 +144,24 @@ void manual() {
   cout << "Graph Program Begin" << endl;
   Graph graph = mkgraph2();
   graph.clear();
-  Node* a = find(graph, "a");
-  Node* e = find(graph, "e");
-  graph.dfs(*a, *e);
   cout << graph << endl;
-  for (vector<Node*>::iterator it = graph.getNodes().begin(); 
-       it != graph.getNodes().end(); it++) {
-    Node* node = *it;
-    int ncolor, ndt, nft, nrank;
-    node->getDiscoveryInformation(ncolor, ndt, nft, nrank);
-    cout << "Node: " << *node << endl;
-  }
-  for (vector<Edge*>:: iterator it = graph.getEdges().begin();
-       it != graph.getEdges().end(); it++) {
-    Edge* edge = *it;
-    cout << "Edge: " << *edge << endl;
-  }
+
+  // Node* a = find(graph, "a");
+  // Node* e = find(graph, "e");
+  // graph.dfs(*a, *e);
+  // cout << graph << endl;
+  // for (vector<Node*>::iterator it = graph.getNodes().begin(); 
+  //      it != graph.getNodes().end(); it++) {
+  //   Node* node = *it;
+  //   int ncolor, ndt, nft, nrank;
+  //   node->getDiscoveryInformation(ncolor, ndt, nft, nrank);
+  //   cout << "Node: " << *node << endl;
+  // }
+  // for (vector<Edge*>:: iterator it = graph.getEdges().begin();
+  //      it != graph.getEdges().end(); it++) {
+  //   Edge* edge = *it;
+  //   cout << "Edge: " << *edge << endl;
+  // }
   cout << "Graph Program End" << endl;
 }
 
