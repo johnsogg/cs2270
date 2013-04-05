@@ -78,7 +78,8 @@ bool Graph::isDirected() {
 
 set<Edge*> Graph::getAdjacentEdges(Node& n) {
   set<Edge*> ret;
-  for (vector<Edge*>::iterator it = edges.begin(); it != edges.end(); it++) {
+  vector<Edge*>::iterator it = edges.begin();
+  for (; it != edges.end(); it++) {
     Edge* edge = *it;
     if (edge->getStart() == &n) {
       ret.insert(edge);
@@ -115,6 +116,46 @@ void Graph::tick(string message) {
 
 void Graph::dfs(Node& start) {
   // implement me. see header file for info.
+
+// mark node gray
+// E = edges related to node 
+// for all edges e in E:
+//     a = other end of e
+//     if a is white:
+//       dfs(a) ; recurse!
+//   mark node black
+  clock++; // clock = clock + 1
+  start.setColor(GRAY, clock);
+  set<Edge*> adj = getAdjacentEdges(start);
+  set<Edge*>::iterator it = adj.begin();
+  Edge* e;
+  Node* other;
+  int col, dt, ft, rk;
+  for (; it != adj.end(); it++) {
+    e = *it;
+    if (e->getStart() == &start) {
+      other = e->getEnd();
+    } else {
+      other = e->getStart();
+    }
+    other->getDiscoveryInformation(col, dt, ft, rk);
+    if (col == WHITE) {
+      other->setPredecessor(start);
+      e->setType(TREE_EDGE);
+      dfs(*other);
+    } else if (col == GRAY) {
+      e->setType(BACK_EDGE);
+    } else if (col == BLACK) {
+      bool ancest = other->isAncestor(start);
+      if (ancest) {
+	e->setType(FORWARD_EDGE);
+      } else {
+	e->setType(CROSS_EDGE);
+      }
+    }
+  }
+  clock = clock + 1;
+  start.setColor(BLACK, clock);
 }
 
 void Graph::dfs(Node& start, Node& finish) {
@@ -154,15 +195,24 @@ void Node::setRank(int r) {
  * and sets the predecessor to NULL.
  **/
 void Node::clear() {
-  this->color = WHITE;
-  this->discovery_time = -1;
+  this->color = WHITE; // color = WHITE. Same thing. Don't need 'this'.
+  this->discovery_time = -1; 
   this->completion_time = -1;
   this->rank = -1;
   this->predecessor = NULL;
 }
 
 void Node::setColor(int search_color, int time) {
-  // implement me. 
+  color = search_color;
+  if (color == BLACK) {
+    completion_time = time;
+  } else if (color == GRAY) {
+    discovery_time = time;
+  } else if (color == WHITE) {
+    
+  } else {
+    cout << "BZZZT you passed in the wrong color." << endl;
+  }
 }
 
 void Node::getDiscoveryInformation(int& color, int& disco_time, 
@@ -176,12 +226,17 @@ void Node::getDiscoveryInformation(int& color, int& disco_time,
 }
 
 bool Node::isAncestor(Node& other) {
-  // implement me.
-  return false;
+  if (predecessor == NULL) {
+    return false;
+  }
+  if (&other == predecessor) {
+    return true;
+  }
+  return predecessor->isAncestor(other);
 }
 
 void Node::setPredecessor(Node& other) {
-  // implement me.
+  predecessor = &other;
 }
 
 Edge::Edge(Node& n1, Node& n2) {
