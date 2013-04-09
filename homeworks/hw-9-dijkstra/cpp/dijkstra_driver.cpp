@@ -192,9 +192,22 @@ void manual() {
   graph.clear();
 
   Node* a = find(graph, "a");
-  cout << "Running Dijkstra from node " << *a << endl;
-  Tree* output = graph.dijkstra(a);
-  output->print_tree();
+  Node* b = find(graph, "b");
+  Node* c = find(graph, "c");
+  Node* d = find(graph, "d");
+  Node* e = find(graph, "e");
+  Node* f = find(graph, "f");
+  Node* g = find(graph, "g");
+  Node* h = find(graph, "h");
+
+  Tree* tree = new Tree;
+  tree->setRoot(a);
+  tree->update(b, NULL, a); // a -> b. No prior parent
+  tree->update(c, NULL, a); // a -> c
+  tree->update(d, NULL, b); // b -> d
+
+  tree->update(d, b, c); // c -> d. inform b.
+  tree->print_tree();
 
   cout << "Manual Program End" << endl;
   
