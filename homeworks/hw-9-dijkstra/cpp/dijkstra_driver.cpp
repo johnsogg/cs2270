@@ -24,6 +24,7 @@
 
 #include <cmath>
 #include <queue>
+#include <limits>
 #include "UTFramework.h"
 #include "dijkstra.hpp"
 
