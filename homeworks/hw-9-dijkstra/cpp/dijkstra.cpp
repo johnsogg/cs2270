@@ -29,12 +29,6 @@
 
  */
 
-#include <algorithm> // std::find
-#include <iostream>
-#include <string>
-#include <set>
-#include <limits>
-#include <queue>
 #include "dijkstra.hpp"
 
 using namespace std;
@@ -197,7 +191,7 @@ void Node::getDiscoveryInformation(int& color, int& disco_time,
 
 bool Node::isAncestor(Node& other) {
   // implement me if you think it is necessary
-  return bool;
+  return false;
 }
 
 void Node::setPredecessor(Node& other) {
