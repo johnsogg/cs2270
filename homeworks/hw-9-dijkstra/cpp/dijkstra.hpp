@@ -1,6 +1,7 @@
 #ifndef __dijkstra_h__
 #define __dijkstra_h__
 
+#include <algorithm>
 #include <cmath>
 #include <functional>
 #include <climits>
