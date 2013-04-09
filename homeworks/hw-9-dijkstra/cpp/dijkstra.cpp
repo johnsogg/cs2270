@@ -23,7 +23,6 @@
    ------------------------------------------------------------
 
 
-
    Your Name:
 
    Your Collaborators:
@@ -198,6 +197,7 @@ void Node::getDiscoveryInformation(int& color, int& disco_time,
 
 bool Node::isAncestor(Node& other) {
   // implement me if you think it is necessary
+  return bool;
 }
 
 void Node::setPredecessor(Node& other) {
