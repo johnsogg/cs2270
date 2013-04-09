@@ -22,10 +22,6 @@
  */
 #define EPSILON 0.0001
 
-#include <cmath>
-#include <queue>
-#include <limits>
-#include "UTFramework.h"
 #include "dijkstra.hpp"
 
 using namespace Thilenius;

@@ -1,10 +1,15 @@
 #ifndef __dijkstra_h__
 #define __dijkstra_h__
 
-#include <vector>
+#include <cmath>
+#include <functional>
+#include <climits>
+#include <queue>
 #include <set>
 #include <string>
-#include <functional>
+#include <vector>
+
+#include "UTFramework.h"
 
 #define WHITE 1
 #define GRAY 2
