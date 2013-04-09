@@ -330,7 +330,7 @@ TEST_BEGIN("Dijkstra Targeted")
     Node* c = find(g2, "c");
     Node* h = find(g2, "h");
     g2.dijkstra(a, c);
-    ok(h, numeric_limits<int>::max(), NULL, true); 
+    ok(h, INT_MAX, NULL, true); 
     ok(b, 0.4, a, true);
   }
   {
@@ -341,7 +341,7 @@ TEST_BEGIN("Dijkstra Targeted")
     Node* c = find(g1, "c");
     Node* d = find(g1, "d");
     g1.dijkstra(a, c);
-    ok(d, numeric_limits<int>::max(), NULL, true);
+    ok(d, INT_MAX, NULL, true);
     ok(c, 0.9, b, true);
     ok(b, 0.5, a, true);
     ok(a, 0, NULL, true);
