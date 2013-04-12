@@ -64,10 +64,11 @@ transition to "running", or "friend still there", which sends us to
 Notice that we can have transitions that start and end on the same
 node. This can be useful due to transition actions.
 
-Some FSMs (called _Deterministic Finite Automata_) have special states
-that are declared 'accepting' states. When these states are active, we
-know that the sequence of input that brought us there is in some way
-correct. These are most commonly used in parsing regular languages.
+Some FSMs (called _Deterministic Finite Automata_, or _DFA_) have
+special states that are declared 'accepting' states. When these states
+are active, we know that the sequence of input that brought us there
+is in some way correct. These are most commonly used in parsing
+regular languages.
 
 Error Transitions
 ------
@@ -78,7 +79,20 @@ that we receive _anything else_. These are "failure" transitions that
 put us to a known location if the input is not what we expect, or what
 we are looking for.
 
-Say we have a FSM that will
+Say we have a DFA that will tell us if an input string spells
+'BIN'. It looks like this:
+
+![](path to bin image)
+
+This includes positively defined events. For example, if we are in the
+'B' state and we receive an 'I' event, we transition to the 'I'
+state. But it also includes error transitions, where if we get
+anything other than what we're looking for, we transition to a special
+failure node (from which we can't escape).
+
+:(
+
+We will use these error transitions in the assignment.
 
 Actions
 ========
