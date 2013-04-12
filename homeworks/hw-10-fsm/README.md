@@ -82,7 +82,7 @@ we are looking for.
 Say we have a DFA that will tell us if an input string spells
 'BIN'. It looks like this:
 
-![](path to bin image)
+![](https://raw.github.com/johnsogg/cs2270/master/homeworks/hw-10-fsm/fsm-bin.png)
 
 This includes positively defined events. For example, if we are in the
 'B' state and we receive an 'I' event, we transition to the 'I'
