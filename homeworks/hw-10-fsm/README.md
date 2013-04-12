@@ -64,8 +64,26 @@ transition to "running", or "friend still there", which sends us to
 Notice that we can have transitions that start and end on the same
 node. This can be useful due to transition actions.
 
+Some FSMs (called _Deterministic Finite Automata_) have special states
+that are declared 'accepting' states. When these states are active, we
+know that the sequence of input that brought us there is in some way
+correct. These are most commonly used in parsing regular languages.
+
+Error Transitions
+------
+
+If we are in a state and we expect to receive events 'foo' or 'bar',
+we might want to have a special transition that we take in the event
+that we receive _anything else_. These are "failure" transitions that
+put us to a known location if the input is not what we expect, or what
+we are looking for.
+
+Say we have a FSM that will
+
 Actions
 ========
+
+(Actions are not used in this HW assignment)
 
 When a FSM receives a signal that triggers a transition, we may
 perform actions. These actions may be associated with entering or
@@ -81,6 +99,7 @@ sequence:
 * T's action
 * S2's entry action
 
-More to come...
+The actions associated with each state do not depend on which
+transition brought us there.
 
 
