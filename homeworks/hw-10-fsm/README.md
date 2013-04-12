@@ -68,7 +68,10 @@ Some FSMs (called _Deterministic Finite Automata_, or _DFA_) have
 special states that are declared 'accepting' states. When these states
 are active, we know that the sequence of input that brought us there
 is in some way correct. These are most commonly used in parsing
-regular languages.
+regular languages. 
+
+Often, an accepting state is drawn with a double-circle, like in the
+drawing below.
 
 Error Transitions
 ------
