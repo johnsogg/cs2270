@@ -75,7 +75,14 @@ important that it be in a directory.
 			
 The `group.txt` file lists all the group members including student ID.
 
-The `introspection.txt` file is the really important thing.
+The `introspection.txt` file is the really important thing.  
+
+
+**The introspection file must be less than 500 words.** You can use
+  the `wc` Unix/Linux command to see how big a text file is. This
+  works from the terminal on Macs as well:
+  
+	  wc -w introspection.txt
 
 Sections for the introspection.txt file (2 slides):
 
