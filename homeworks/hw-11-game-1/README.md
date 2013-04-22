@@ -1,4 +1,4 @@
-Game Scenario (checkpoint)
+Game 
 ==========
 
 Everybody loves games! Except for people who don't.
