@@ -62,7 +62,13 @@ Other guidelines:
 What To Turn In
 ----------
 
-Turn in a tarball or zip file that has the following directory
+You'll turn this in **via email** to me. Please send it to my gmail 
+account: `gabe.johnson@gmail.com` and use the subject 
+line `CS 2270 Project`.
+
+Retrograde is not involved in this assignment.
+
+Send a tarball or zip file that has the following directory
 structure, where `CoolGroupName` is the name of your group. I will
 unpack your archive in a directory with everybody else so it is
 important that it be in a directory.
@@ -84,7 +90,7 @@ The `introspection.txt` file is the really important thing.
   
 	  wc -w introspection.txt
 
-Sections for the introspection.txt file (2 slides):
+Sections for the introspection.txt file:
 
 1. Initial ideas: enumerate the list of crazy and not-so-crazy ideas
 that you initially had for your game.
